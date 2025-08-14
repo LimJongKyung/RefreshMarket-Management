@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/orderCSS/orderlist.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <!-- 본문 영역 -->
+	    <main class="order-list">
+	      	<h1>주문 현황</h1>
+			<table border="1">
+			    <tr>
+			        <th>주문 ID</th>
+			        <th>주문자</th>
+			        <th>상품명</th>
+			        <th>총 수량</th>
+			        <th>결제방식</th>
+			        <th>결제상태</th>
+			        <th>주문상태</th>
+			        <th>주문일</th>
+			        <th>액션</th>
+			    </tr>
+			    <tr th:each="order : ${orders}">
+			        <td th:text="${order.orderId}"></td>
+			        <td th:text="${order.customerName}"></td>
+			        <td th:text="${orderProductNames[order.orderId]}"></td>
+			        <td th:text="${order.quantity}"></td>
+			        <td th:text="${order.paymentMethod}"></td>
+			        <td th:text="${order.bankStatus}"></td>
+			        <td th:text="${order.orderStatus}"></td>
+			        <td th:text="${order.orderDate}"></td>
+			        <td>
+			            <a th:href="@{/orders/edit/{id}(id=${order.orderId})}">수정</a> |
+			            <a th:href="@{/orders/delete/{id}(id=${order.orderId})}">삭제</a>
+			        </td>
+			    </tr>
+			</table>
+	    </main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+</body>
+</html>

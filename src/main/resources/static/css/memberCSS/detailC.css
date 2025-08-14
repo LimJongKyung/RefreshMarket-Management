@@ -1,0 +1,87 @@
+/* 기본 레이아웃 */
+main.detail-customer {
+    max-width: 800px;
+    margin: 50px auto;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+}
+
+/* 상세 테이블 */
+.detail-customer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.detail-customer th,
+.detail-customer td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.detail-customer th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    width: 30%;
+}
+
+/* 버튼 컨테이너 */
+.detail-customer .mt-3 {
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+/* 버튼 공통 스타일 */
+.detail-customer .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    color: #fff;
+}
+
+.detail-customer .mt-3 {
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;  /* 좌우 중앙 정렬 */
+    flex-wrap: wrap;
+}
+
+/* 각 버튼 색상 */
+.detail-customer .btn-primary {
+    background-color: #007bff;
+}
+
+.detail-customer .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.detail-customer .btn-secondary {
+    background-color: #6c757d;
+}
+
+.detail-customer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.detail-customer .btn-danger {
+    background-color: #dc3545;
+}
+
+.detail-customer .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* form 안의 삭제 버튼 스타일링 */
+.detail-customer form button.btn {
+    border: none;
+}

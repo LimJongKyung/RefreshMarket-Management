@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/main.css" rel="stylesheet">
+<link href="/css/memberCSS/customer.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+	    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <!-- 본문 영역 -->
+	    <main class="customer">
+	      	<div class="customer-list">
+	      		<h2>고객 목록</h2>
+	      		<form action="/customer" method="get">
+				    <select name="searchType">
+				        <option value="id" th:selected="${searchType} == 'id'">아이디</option>
+				        <option value="name" th:selected="${searchType} == 'name'">이름</option>
+				        <option value="address" th:selected="${searchType} == 'address'">주소</option>
+				    </select>
+				    <input type="text" name="keyword" placeholder="검색어 입력" th:value="${keyword}">
+				    <button type="submit">검색</button>
+				</form>
+			    <table border="1">
+			        <thead>
+			            <tr>
+			                <th>ID</th>
+			                <th>이름</th>
+			                <th>주민번호</th>
+			                <th>주소</th>
+			                <th>전화번호</th>
+			                <th>이메일</th>
+			                <th>가입일</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+					    <tr th:each="customer : ${boardPage.content}">
+					        <td>
+					            <a th:href="@{'/customer/' + ${customer.id}}"
+					               th:text="${customer.id}"></a>
+					        </td>
+					        <td th:text="${customer.name}"></td>
+					        <td th:text="${customer.registrationNumber}"></td>
+					        <td th:text="${customer.address}"></td>
+					        <td th:text="${customer.phoneNumber}"></td>
+					        <td th:text="${customer.email}"></td>
+					        <td th:text="${#temporals.format(customer.joinDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					    </tr>
+					</tbody>
+			    </table>
+			    <!-- 검색 결과 없을 때만 메시지 출력 -->
+				<div th:if="${searchTried} and ${boardPage.totalElements == 0}">
+				    <p style="color: red;">검색한 조건의 고객이 없습니다.</p>
+				</div>
+	      	</div>
+	      	<div class="pagination">
+			 	<a th:if="${boardPage.hasPrevious()}" th:href="@{/customer(page=${currentPage - 1})}">이전</a>
+			
+				<span th:each="i : ${#numbers.sequence(0, boardPage.totalPages - 1)}">
+			    	<a th:href="@{/customer(page=${i})}" th:text="${i + 1}" th:classappend="${i == currentPage} ? 'active' : ''"></a>
+			  	</span>
+			
+			  	<a th:if="${boardPage.hasNext()}" th:href="@{/customer(page=${currentPage + 1})}">다음</a>
+			</div>
+	    </main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+	<script src="/JS/modifyC.js"></script>
+</body>
+</html>

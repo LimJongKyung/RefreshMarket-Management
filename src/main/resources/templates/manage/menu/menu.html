@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/main.css" rel="stylesheet">
+<link href="/css/menuCSS/menu.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+	    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <!-- 본문 영역 -->
+	    <main class="menu-page">
+		    <h1 class="menu-title">메뉴 관리 페이지</h1>
+		
+		    <!-- 사이드바 메뉴 -->
+		    <section class="menu-section sidebar">
+		        <h2>사이드바 메뉴</h2>
+		        <ul class="menu-list">
+		            <li th:each="menu : ${sidebarMenus}" class="menu-item">
+		                <form th:action="@{/menus/update}" method="post" class="menu-form">
+		                    <input type="hidden" name="id" th:value="${menu.id}" />
+		                    <input type="text" name="name" th:value="${menu.name}" class="menu-input" />
+		                    <button type="submit" class="menu-button" onclick="return confirm('사이드바 메뉴 수정 완료!')">수정</button>
+		                </form>
+		                <form th:action="@{/menus/delete}" method="post" class="menu-form">
+		                    <input type="hidden" name="id" th:value="${menu.id}" />
+		                    <button type="submit" class="menu-button delete" onclick="return confirm('사이드바 메뉴 삭제 완료!')">삭제</button>
+		                </form>
+		            </li>
+		        </ul>
+		
+		        <h3>사이드바 메뉴 추가</h3>
+		        <form th:action="@{/menus/add}" method="post" class="menu-form add-form">
+		            <input type="text" name="name" placeholder="메뉴 이름" required class="menu-input" />
+		            <input type="hidden" name="position" value="sidebar" />
+		            <button type="submit" class="menu-button add" onclick="return confirm('사이드바 메뉴추가 완료!')">추가</button>
+		        </form>
+		    </section>
+		
+		    <hr />
+		
+		    <!-- 헤더 메뉴 -->
+		    <section class="menu-section header">
+		        <h2>헤더 메뉴</h2>
+		        <ul class="menu-list">
+		            <li th:each="menu : ${headerMenus}" class="menu-item">
+		                <form th:action="@{/menus/update}" method="post" class="menu-form">
+		                    <input type="hidden" name="id" th:value="${menu.id}" />
+		                    <input type="text" name="name" th:value="${menu.name}" class="menu-input" />
+		                    <button type="submit" class="menu-button" onclick="return confirm('헤더 메뉴 수정완료!')">수정</button>
+		                </form>
+		                <form th:action="@{/menus/delete}" method="post" class="menu-form">
+		                    <input type="hidden" name="id" th:value="${menu.id}" />
+		                    <button type="submit" class="menu-button delete" onclick="return confirm('헤더 메뉴 삭제완료!')">삭제</button>
+		                </form>
+		            </li>
+		        </ul>
+		
+		        <h3>헤더 메뉴 추가</h3>
+		        <form th:action="@{/menus/add}" method="post" class="menu-form add-form">
+		            <input type="text" name="name" placeholder="메뉴 이름" required class="menu-input" />
+		            <input type="hidden" name="position" value="header" />
+		            <button type="submit" class="menu-button add" onclick="return confirm('헤더 메뉴 추가 완료!')">추가</button>
+		        </form>
+		    </section>
+		</main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/JS/menu.js"></script>
+</body>
+</html>

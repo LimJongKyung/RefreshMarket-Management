@@ -1,0 +1,96 @@
+.modify-product {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modify-product h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: 700;
+}
+
+.modify-product label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+.modify-product input[type="text"],
+.modify-product input[type="number"],
+.modify-product select,
+.modify-product textarea,
+.modify-product input[type="file"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modify-product input[type="text"]:focus,
+.modify-product input[type="number"]:focus,
+.modify-product select:focus,
+.modify-product textarea:focus,
+.modify-product input[type="file"]:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 6px #28a745aa;
+}
+
+.modify-product textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.modify-product img {
+  display: block;
+  margin: 0 auto 20px auto;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.button-group {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button-group button,
+.button-group .btn {
+  padding: 10px 25px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  min-width: 120px;
+}
+
+.button-group button[type="submit"] {
+  background-color: #28a745;
+}
+
+.button-group button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.button-group .btn-secondary {
+  background-color: #6c757d;
+}
+
+.button-group .btn-secondary:hover {
+  background-color: #5a6268;
+}

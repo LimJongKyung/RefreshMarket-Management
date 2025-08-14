@@ -1,0 +1,62 @@
+/* requestDetail.css – 넓게 수정 */
+
+.request-detail {
+    max-width: 1200px; /* 거의 화면 전체 */
+    width: 90%; /* 화면 크기에 따라 유동적으로 조절 */
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 40px 60px; /* 좌우 패딩 넉넉히 */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.request-detail h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    color: #333;
+}
+
+.request-detail table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.request-detail th,
+.request-detail td {
+    padding: 16px 20px; /* 패딩 크게 */
+    border: 1px solid #dee2e6;
+}
+
+.request-detail th {
+    background-color: #f8f9fa;
+    text-align: left;
+    width: 25%;
+    color: #555;
+}
+
+.request-detail td {
+    color: #333;
+}
+
+.request-detail .buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.request-detail .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.request-detail .btn:hover {
+    background-color: #0056b3;
+}

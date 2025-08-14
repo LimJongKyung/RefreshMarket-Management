@@ -1,0 +1,166 @@
+/* 전체 폼 영역 스타일 */
+.modify-customer {
+  width: 90%;       /* 화면 너비의 90% 차지 */
+  max-width: 700px; /* 최대 700px */
+  margin: 40px auto;
+  padding: 24px 32px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: 'Noto Sans KR', sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: #333;
+}
+
+.passwordword {
+	display: inline-block;
+}
+
+/* 제목 */
+.modify-customer h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+/* 레이블 */
+.modify-customer label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: inline-block;
+  color: #555;
+}
+
+/* 입력창 */
+.modify-customer input[type="text"],
+.modify-customer input[type="password"],
+.modify-customer input[type="email"],
+.modify-customer input[readonly] {
+  width: 100%;      /* 너비는 부모 컨테이너에 꽉 차게 */
+  height: 42px;     /* 높이는 일정하게 */
+  padding: 0 14px;  /* 위아래 패딩은 없애고 좌우만 넣음 */
+  box-sizing: border-box;
+  font-size: 1rem;
+  border: 1.8px solid #ccc;
+  border-radius: 6px;
+  line-height: 42px; /* 텍스트 수직 정렬 */
+  transition: border-color 0.3s ease;
+}
+
+/* 포커스 시 */
+.modify-customer input[type="text"]:focus,
+.modify-customer input[type="password"]:focus,
+.modify-customer input[type="email"]:focus {
+  outline: none;
+  border-color: #4285f4;
+  background-color: #fff;
+}
+
+/* readonly 스타일 */
+.modify-customer input[readonly] {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.modify-customer .button-group {
+  text-align: center; /* inline-block 요소 가운데 정렬 */
+  margin-top: 20px;
+  gap: 12px; /* 버튼 간 간격 (flex일 때 적용됨) */
+}
+
+/* 버튼 공통에 justify-content: center는 불필요하니 제거해도 됩니다 */
+.modify-customer button,
+.modify-customer .btn {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+/* 수정하기 버튼 */
+.modify-customer button[type="submit"] {
+  background-color: #4285f4;
+  color: white;
+  margin-top: 10px;
+  margin-right: 12px;
+  min-width: 100px;
+}
+
+.modify-customer button[type="submit"]:hover {
+  background-color: #3367d6;
+}
+
+/* 주소 검색 버튼 */
+.modify-customer button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.modify-customer button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+/* 목록으로 버튼 */
+.modify-customer .btn.btn-secondary {
+  background-color: #adb5bd;
+  color: #212529;
+  min-width: 100px;
+  line-height: 1.5;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.modify-customer .btn.btn-secondary:hover {
+  background-color: #868e96;
+  color: white;
+}
+
+/* 메시지 스타일 */
+.msg {
+  font-size: 0.9rem;
+  min-height: 20px;
+  color: #d93025; /* 빨간색 에러 메시지 */
+  margin-to
+}
+
+/* 주소 레이블과 버튼을 한 줄에 배치 */
+.address-search-wrapper {
+  display: flex;
+  align-items: center;       /* 수직 중앙 정렬 */
+  justify-content: space-between; /* 좌우 끝 정렬 */
+  margin-bottom: 8px;        /* 아래 간격 */
+}
+
+/* 주소 레이블 기본 스타일 유지 */
+.address-search-wrapper label {
+  font-weight: 600;
+  color: #555;
+  /* 필요하면 너비 제한 가능 */
+}
+
+/* 주소 검색 버튼 */
+.address-search-wrapper button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.address-search-wrapper button:hover {
+  background-color: #5a6268;
+}
+

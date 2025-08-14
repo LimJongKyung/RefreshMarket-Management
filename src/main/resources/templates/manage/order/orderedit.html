@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/orderCSS/orderedit.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <!-- 본문 영역 -->
+	    <main class="order-edit">
+		    <h1>주문 정보 입력</h1>
+		
+		    <div th:if="${productList != null}">
+			  <p><strong>주문한 상품:</strong></p>
+			  <div class="product-list">
+			    <div th:each="product, iterStat : ${productList}" class="product-card">
+			      <p>
+			        <span th:text="${product.name}">상품명</span>
+			        &nbsp;|&nbsp;
+			        <span th:text="${quantityList[iterStat.index]} + '개'">수량</span>
+			        &nbsp;|&nbsp;
+  					<span th:text="${optionList[iterStat.index]}">옵션</span>
+			      </p>
+			      <img th:src="@{/orders/image/{id}(id=${product.productId})}" alt="상품 이미지" />
+			    </div>
+			  </div>
+			</div>
+		
+		    <form th:action="@{/orders}" th:object="${orderInfo}" method="post">
+			  <input type="hidden" th:field="*{orderId}" />
+			
+			  <!-- 주문 날짜 화면 표시 + hidden input -->
+			  <p>주문 날짜: <span th:text="${#temporals.format(orderInfo.orderDate, 'yyyy-MM-dd')}"></span></p>
+			  <input type="hidden" th:field="*{orderDate}" />
+			
+			  <!-- 상품 리스트 (화면 표시 + hidden inputs) -->
+			  <input type="hidden" th:field="*{orderId}" />
+			  <input type="hidden" th:field="*{productId}" /> <!-- 콤마 구분 문자열 -->
+			  <input type="hidden" th:field="*{quantity}" />
+			
+			  <!-- 회원 ID, 이름 등 readonly 필드 -->
+			  <label>회원 ID: <input type="text" th:field="*{customerId}" readonly /></label><br/>
+			  <label>이름: <input type="text" th:field="*{customerName}" readonly /></label><br/>
+			  <label>총 수량: <input type="number" th:field="*{quantity}" readonly /></label><br/>
+			  <label>총 가격: <input type="number" th:field="*{totalPrice}" readonly /></label><br/>
+			  <label>주소: <input type="text" th:field="*{shippingAddress}" readonly /></label><br/>
+			  <label>전화번호: <input type="text" th:field="*{phoneNumber}" readonly /></label><br/>
+			  <label>이메일: <input type="email" th:field="*{email}" readonly /></label><br/>
+			
+			  <label>결제 방식:
+			        <select th:field="*{paymentMethod}" disabled>
+			            <option value="카드">카드</option>
+			            <option value="계좌이체">계좌이체</option>
+			        </select>
+			        <input type="hidden" th:field="*{paymentMethod}" />
+			    </label><br/>
+			
+			  <label>계좌 상태:
+			        <select th:field="*{bankStatus}">
+			            <option value="입금">입금</option>
+			            <option value="입금하지_않음">입금하지 않음</option>
+			        </select>
+			    </label><br/>
+			
+			  <label>주문 상태:
+			        <select th:field="*{orderStatus}">
+			            <option value="주문확인">주문확인</option>
+			            <option value="입금확인">입금확인</option>
+			            <option value="배송중">배송중</option>
+			            <option value="배송완료">배송완료</option>
+			            <option value="주문취소">주문취소</option>
+			        </select>
+			    </label><br/>
+			
+			  <label>요청사항: <input type="text" th:field="*{deliveryRequest}" readonly /></label><br/>
+			
+			  <button type="submit">저장</button>
+			  <a th:href="@{/orders}" class="button-link">목록으로</a>
+			</form>
+		</main>
+
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+</body>
+</html>

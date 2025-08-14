@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<th:block th:fragment="config">
+			<meta charset="UTF-8">
+			<title>Insert title here</title>
+			<link href="/css/block.css" rel="stylesheet">
+		</th:block>
+	</head>
+	<body>
+		<th:block th:fragment="logo">
+		  <div class="site-logo">
+		    <a href="/" class="site-logo__link">
+		      <span class="site-logo__text">Refresh<span class="highlight">Market</span></span>
+		    </a>
+		  </div>
+		</th:block>
+		<th:block th:fragment="mainMenu">
+		  	<nav class="main-menu">
+			    <ul class="main-menu__list">
+				     <li class="main-menu__item">
+				        <a class="main-menu__link" href="/">HOME</a>
+				     </li>
+				     <li class="main-menu__item">
+				        <a class="main-menu__link" href="/orders">주문현황</a>
+				     </li>
+				     <li class="main-menu__item">
+				        <a class="main-menu__link" href="/customer">고객관리</a>
+				     </li>
+				     <li class="main-menu__item">
+				     	<a class="main-menu__link" href="/requests">문의사항</a>
+				     </li>
+			    </ul>
+		  	</nav>
+		</th:block>
+		<th:block th:fragment="sideMenu">
+			<aside class="side-menu">
+			    <ul class="side-menu__list">
+				    <li class="side-menu__item">
+				        <a class="side-menu__link" href="/product">상품관리</a>
+				    </li>
+				    <li class="side-menu__item">
+				        <a class="side-menu__link" href="/menus">메뉴관리</a>
+				    </li>
+				    <li class="side-menu__item">
+				        <a class="side-menu__link" href="#">운영방침관리</a>
+				    </li>
+			    </ul>
+			</aside>
+		</th:block>
+		<th:block th:fragment="footer">
+		  <footer class="site-footer">
+		    <div class="site-footer__content">
+		      <p>© 2025 Refresh Market. All rights reserved.</p>
+		      <p>사업자등록번호: 123-45-67890 | 대표: 홍길동 | 문의: contact@yourcompany.com</p>
+		      <p>주소: 서울특별시 강남구 테헤란로 123, 10층 | 고객센터: 02-1234-5678</p>
+		    </div>
+		  </footer>
+		</th:block>
+	</body>
+</html>

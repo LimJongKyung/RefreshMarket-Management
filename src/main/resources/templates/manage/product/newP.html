@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/main.css" rel="stylesheet">
+<link href="/css/productCSS/newP.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+	    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <!-- 본문 영역 -->
+	    <main class="product">
+		  	<h2>상품 등록</h2>
+		    <form action="/product/new" method="post" enctype="multipart/form-data">
+		        <label for="name">상품명:</label><br>
+		        <input type="text" id="name" name="name" required><br><br>
+		
+		        <label for="description">설명:</label><br>
+		        <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+		
+		        <label for="price">가격:</label><br>
+		        <input type="number" id="price" name="price" step="0.01" required><br><br>
+		
+		        <label for="stock">재고 수량:</label><br>
+		        <input type="number" id="stock" name="stock"><br><br>
+		
+				<label for="category">카테고리:</label><br/>
+				<select id="category" name="category">
+				    <option value="">-- 선택하세요 --</option>
+				    <option th:each="menu : ${categories}"
+				            th:value="${menu.name}"
+				            th:text="${menu.position == 'header' ? '상단 - ' + menu.name : '사이드바 - ' + menu.name}"
+				            th:selected="${product.category} == ${menu.name}">
+				    </option>
+				</select><br/><br/>
+				
+				<label>메인 화면에 추가하기:</label><br/>
+				<label>
+				    <input type="checkbox" name="mainDisplay" value="sale">
+				    메인 오늘의 세일
+				</label><br/>
+				<label>
+				    <input type="checkbox" name="mainDisplay" value="group">
+				    메인 공동 구매
+				</label><br/>
+				<label>
+				 	<input type="checkbox" name="mainDisplay" value="promotion">
+				    메인 중소기업 제품 홍보
+				</label><br/><br/>
+		
+				<!-- 판매자 -->
+		        <label for="seller">판매자:</label><br>
+		        <input type="text" id="seller" name="seller" required><br><br>
+		
+		        <!-- 제조업체 -->
+		        <label for="manufacturer">제조업체:</label><br>
+		        <input type="text" id="manufacturer" name="manufacturer" required><br><br>
+		
+		        <!-- 상세선택: 사용자가 여러 개를 콤마 등으로 구분해서 입력 -->
+				<label for="detailOption">상세선택 (콤마로 구분):</label><br>
+				<input type="text" id="detailOption" name="detailOption" placeholder="예: 옵션1, 옵션2, 옵션3"><br><br>
+				
+				<label for="detailOptionPrice">옵션별 추가 가격 (콤마로 구분, 옵션 순서대로):</label><br>
+				<input type="text" id="detailOptionPrice" name="detailOptionPrice" placeholder="예: 0, 1000, 2000"><br><br>
+
+		        <label for="imageFile">이미지 파일 업로드:</label><br>
+		        <input type="file" id="imageFile" name="imageFile"><br><br>
+		
+		        <button type="submit">상품 등록</button>
+		    </form>
+		</main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+	<script src="/JS/modifyC.js"></script>
+</body>
+</html>

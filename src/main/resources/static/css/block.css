@@ -1,0 +1,113 @@
+/* 로고 전체 감싸는 영역 */
+.site-logo {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  justify-content: center;
+  height: 80px;
+}
+
+.site-logo__link {
+  text-decoration: none;
+  font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  user-select: none;
+  display: inline-block;
+  letter-spacing: 0.1em;
+}
+
+.site-logo__link:hover {
+  color: #3498db;
+}
+
+.site-logo__text .highlight {
+  color: #e74c3c;
+}
+
+/* 메인메뉴 디자인 */
+.main-menu {
+  background-color: #333;
+  padding: 0.5rem 1rem;
+}
+
+/* 메뉴 리스트 */
+.main-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
+}
+
+/* 메뉴 항목 */
+.main-menu__item {
+}
+
+/* 메뉴 링크 */
+.main-menu__link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.main-menu__link:hover {
+  color: #ffcc00; /* 호버 시 색상 강조 */
+}
+
+
+/* 사이드 메뉴 전체 영역 */
+.side-menu {
+  width: 200px;
+  min-height: 100vh;
+  background-color: #333;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 메뉴 리스트 스타일 */
+.side-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 메뉴 항목 */
+.side-menu__item {
+  margin-bottom: 1rem;
+}
+
+/* 메뉴 링크 스타일 */
+.side-menu__link {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+/* 호버 효과 */
+.side-menu__link:hover {
+  background-color: #34495e;
+}
+
+
+.site-footer {
+  background-color: #333;
+  color: #ecf0f1;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.site-footer__title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+

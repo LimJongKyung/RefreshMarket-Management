@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/main.css" rel="stylesheet">
+<link href="/css/memberCSS/detailC.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+	    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <!-- 본문 영역 -->
+	    <main class="detail-customer">
+	      	<div class="container mt-5">
+			    <h2 class="mb-4">회원 상세 정보</h2>
+			    <table class="table table-bordered">
+			        <tbody>
+			            <tr>
+			                <th>ID</th>
+			                <td th:text="${member.id}">아이디</td>
+			            </tr>
+			            <tr>
+			                <th>비밀번호</th>
+			                <td th:text="${member.passwd}">비밀번호</td>
+			            </tr>
+			            <tr>
+			                <th>이름</th>
+			                <td th:text="${member.name}">이름</td>
+			            </tr>
+			            <tr>
+			                <th>주민등록번호</th>
+			                <td th:text="${member.registrationNumber}">주민등록번호</td>
+			            </tr>
+			            <tr>
+			                <th>주소</th>
+			                <td th:text="${member.address}">주소</td>
+			            </tr>
+			            <tr>
+			                <th>전화번호</th>
+			                <td th:text="${member.phoneNumber}">전화번호</td>
+			            </tr>
+			            <tr>
+			                <th>이메일</th>
+			                <td th:text="${member.email}">이메일</td>
+			            </tr>
+			            <tr>
+			                <th>가입일</th>
+			                <td th:text="${#temporals.format(member.joinDate, 'yyyy-MM-dd HH:mm:ss')}">가입일</td>
+			            </tr>
+			        </tbody>
+			    </table>
+			
+			    <div class="mt-3">
+			        <a href="/customer" class="btn btn-secondary">목록으로</a>
+			        <a th:href="@{/customer/updateForm(id=${member.id})}" class="btn btn-primary">수정</a>
+				    <form th:action="@{/customer/delete}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+					    <input type="hidden" name="id" th:value="${member.id}" />
+					    <button type="submit" class="btn btn-danger">삭제</button>
+					</form>
+			    </div>
+			</div>
+	    </main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+</body>
+</html>

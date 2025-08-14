@@ -1,0 +1,123 @@
+/* 전체 레이아웃 */
+main.product {
+  max-width: 1200px;
+  margin: 50px auto;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #333;
+}
+
+/* 제목 */
+.product-list h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* 검색 폼 */
+.product-list form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-list select,
+.product-list input[type="text"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.product-list button[type="submit"] {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-list button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.product-list .btn-primary {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+
+  float: right; /* 버튼을 오른쪽 끝으로 이동 */
+}
+
+.product-list .btn-primary:hover {
+  background-color: #218838;
+}
+
+/* 테이블 */
+.product-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.product-list th,
+.product-list td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.product-list th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+/* 이미지 */
+.product-list img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* 검색 결과 없음 */
+.product-list p {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* 페이지네이션 */
+.pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.pagination a {
+  margin: 0 5px;
+  padding: 6px 12px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  color: #333;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination a.active,
+.pagination a:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}

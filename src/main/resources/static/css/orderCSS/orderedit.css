@@ -1,0 +1,120 @@
+.order-edit {
+  width: 800px; /* 고정 너비 */
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
+}
+
+.order-edit h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.order-edit form label,
+.order-edit form input,
+.order-edit form select {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+.order-edit form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.order-edit form input[type="text"],
+.order-edit form input[type="number"],
+.order-edit form input[type="email"],
+.order-edit form select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.order-edit form input[type="text"]:focus,
+.order-edit form input[type="number"]:focus,
+.order-edit form input[type="email"]:focus,
+.order-edit form select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.order-edit form button,
+.order-edit form a.button-link {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.order-edit form button:hover,
+.order-edit form a.button-link:hover {
+  background-color: #0056b3;
+}
+
+.order-edit form a.button-link {
+  margin-left: 1rem;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: calc(25% - 10px);
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.product-card p {
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 350px) {
+  .product-card {
+    width: 100%;
+  }
+}

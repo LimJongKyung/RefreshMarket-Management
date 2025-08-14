@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <title>Insert title here</title>
+  <th:block th:insert="~{template/fragments/block :: config}"></th:block>
+  <link href="/css/main.css" rel="stylesheet" />
+  <link href="/css/custom-stats.css" rel="stylesheet" />
+</head>
+<body>
+  <th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+  <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+    <main class="main-content">
+      <div class="container py-4">
+
+        <!-- 주문 통계 -->
+        <div class="card mb-4">
+          <div class="card-header bg-primary text-white">주문 통계 (일별)</div>
+          <div class="card-body row">
+            <div class="table-wrapper">
+              <table class="table table-hover table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th>날짜</th>
+                    <th>주문 고객 수</th>
+                    <th>총 주문 합계</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="stat : ${orderStats}">
+                    <td th:text="${stat.orderDate}"></td>
+                    <td th:text="${stat.customerCount} + '명'"></td>
+                    <td th:text="${#numbers.formatInteger(stat.totalSum, 0, 'COMMA')} + '원'"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <canvas id="orderChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 회원 가입 통계 -->
+        <div class="card mb-4">
+          <div class="card-header bg-success text-white">회원 가입 통계 (일별)</div>
+          <div class="card-body row">
+            <div class="table-wrapper">
+              <table class="table table-hover table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th>날짜</th>
+                    <th>신규 가입자</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="item : ${customerStats}">
+                    <td th:text="${#strings.substring(item.day,0,4)} + '년 ' + ${#strings.substring(item.day,5,7)} + '월 ' + ${#strings.substring(item.day,8,10)} + '일'"></td>
+                    <td th:text="${item.count} + '명'"></td>
+                  </tr>
+                  <tr th:if="${#lists.isEmpty(customerStats)}">
+                    <td colspan="2" class="text-center">데이터가 없습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <canvas id="memberChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 요청 통계 -->
+        <div class="card mb-4">
+          <div class="card-header bg-warning">문의사항 통계 (일별)</div>
+          <div class="card-body row">
+            <div class="table-wrapper">
+              <table class="table table-hover table-bordered">
+                <thead class="table-light">
+                  <tr>
+                    <th>날짜</th>
+                    <th>문의사항 수</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="item : ${requestStats}">
+                    <td th:text="${#strings.substring(item.day,0,4)} + '년 ' + ${#strings.substring(item.day,5,7)} + '월 ' + ${#strings.substring(item.day,8,10)} + '일'"></td>
+                    <td th:text="${item.count} + '건'"></td>
+                  </tr>
+                  <tr th:if="${#lists.isEmpty(requestStats)}">
+                    <td colspan="2" class="text-center">데이터가 없습니다.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <canvas id="requestChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+
+  <script th:inline="javascript">
+    let orderStats = /*[[${orderStats}]]*/ [];
+    let memberStats = /*[[${customerStats}]]*/ [];
+    let requestStats = /*[[${requestStats}]]*/ [];
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/JS/main.js"></script>
+</body>
+</html>

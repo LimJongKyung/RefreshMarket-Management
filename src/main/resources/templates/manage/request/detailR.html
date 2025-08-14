@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      class="h-100" data-bs-theme="auto">
+<head>
+<meta charset="UTF-8">
+<title>요청 리스트</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/main.css" rel="stylesheet">
+<link href="/css/requestCSS/requestdetail.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+
+    <div class="layout-container">
+	    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+
+	    <!-- 본문 영역 -->
+	    <main class="request-detail">
+		    <h1>요청 상세</h1>
+
+		    <table class="table table-bordered">
+		        <tr>
+		            <th>요청 ID</th>
+		            <td th:text="${request.requestId}"></td>
+		        </tr>
+		        <tr>
+		            <th>이름</th>
+		            <td th:text="${request.consultantName}"></td>
+		        </tr>
+		        <tr>
+		            <th>이메일</th>
+		            <td th:text="${request.consultantEmail}"></td>
+		        </tr>
+		        <tr>
+		            <th>상담 유형</th>
+		            <td th:text="${request.consultationType}"></td>
+		        </tr>
+		        <tr>
+		            <th>요청 내용</th>
+		            <td th:text="${request.consultantMessage}"></td>
+		        </tr>
+		        <tr>
+		            <th>요청 날짜</th>
+		            <td th:text="${#temporals.format(request.requestDate, 'yyyy-MM-dd HH:mm')}"></td>
+		        </tr>
+		    </table>
+		
+		    <div class="buttons">
+		        <a th:href="@{/requests}" class="btn">목록</a>
+		    </div>
+		</main>
+	</div>
+
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+</body>
+</html>

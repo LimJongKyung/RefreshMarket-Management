@@ -1,0 +1,99 @@
+/* 본문 전체를 가로 가운데 정렬 */
+.request {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* 가로 가운데 */
+    padding: 40px 0;         /* 위아래 여백 */
+}
+
+/* 컨테이너 스타일 */
+.request .container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 900px; /* 최대 너비 제한 */
+}
+
+/* 제목 */
+.request h1 {
+    text-align: center;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* 검색 폼 */
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 50%;
+}
+
+.search-form button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+/* 테이블 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background-color: #f1f3f5;
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+}
+
+.table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+/* 페이징 */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.pagination a {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination span {
+    font-size: 14px;
+    color: #555;
+}

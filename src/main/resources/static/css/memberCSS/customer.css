@@ -1,0 +1,83 @@
+/* 기본 레이아웃 */
+main.customer {
+    max-width: 1000px;
+    margin: 50px auto;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+}
+
+/* 검색 폼 */
+.customer-list form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.customer-list select,
+.customer-list input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.customer-list button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.customer-list button:hover {
+    background-color: #0056b3;
+}
+
+/* 테이블 */
+.customer-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.customer-list th, .customer-list td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.customer-list th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* 페이징 */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 3px;
+    border: 1px solid #ddd;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-color: #007bff;
+}
