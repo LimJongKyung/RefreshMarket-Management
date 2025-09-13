@@ -54,7 +54,7 @@ public class Product {
     
     @Column(name = "DETAIL_OPTION_PRICE", length = 500)
     private String detailOptionPrice;
-
+    
     public String getSeller() {
 		return seller;
 	}

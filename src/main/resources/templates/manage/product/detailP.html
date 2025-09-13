@@ -8,6 +8,7 @@
 <link href="/css/productCSS/detailP.css" rel="stylesheet">
 </head>
 <body>
+	<th:block th:insert="~{template/fragments/block :: header}"></th:block>
 	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
     <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
     <div class="layout-container">
@@ -27,6 +28,18 @@
 		          <td th:text="${product.name}">제품명</td>
 		        </tr>
 		        <tr>
+				    <th>상세페이지 이미지</th>
+				    <td>
+				        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+				            <div th:each="img : ${detailImages}">
+				                <img th:src="@{/product/detailImage/{id}(id=${img.id})}" 
+				                     alt="상세 이미지" 
+				                     style="width:80px; height:80px; object-fit:cover;" />
+				            </div>
+				        </div>
+				    </td>
+				</tr>
+		        <tr>
 		          <th>설명</th>
 		          <td th:text="${product.description}">설명</td>
 		        </tr>
@@ -44,6 +57,18 @@
 		            <img th:src="@{/product/image/{id}(id=${product.productId})}" alt="이미지" style="width:80px; height:80px; object-fit:cover;" />
 		          </td>
 		        </tr>
+		        <tr>
+				    <th>추가 이미지</th>
+				    <td>
+				        <div style="display:flex; gap:10px;">
+				            <div th:each="img : ${extraImages}">
+				                <img th:src="@{/product/extraImage/{id}(id=${img.id})}" 
+							     alt="추가 이미지" 
+							     style="width:80px; height:80px; object-fit:cover;" />
+				            </div>
+				        </div>
+				    </td>
+				</tr>
 		        <tr>
 		          <th>카테고리 ID</th>
 		          <td th:text="${product.category}">카테고리 ID</td>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/orderCSS/returndetail.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: header}"></th:block>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <main class="return-list">
+		    <h2>📄 반품 요청 상세</h2>
+		
+		    <form th:action="@{/orders/update}" method="post">
+		        <input type="hidden" name="returnId" th:value="${request.returnId}" />
+		
+		        <table>
+		            <tr><th>ID</th><td th:text="${request.returnId}">1</td></tr>
+		            <tr><th>주문ID</th><td th:text="${request.orderId}">1001</td></tr>
+		            <tr><th>회원ID</th><td th:text="${request.memberId}">user01</td></tr>
+		            <tr><th>상품ID</th><td th:text="${request.productId}">P123</td></tr>
+		            <tr><th>사유유형</th><td th:text="${request.reasonType}">단순변심</td></tr>
+		            <tr><th>사유 상세</th><td th:text="${request.reasonText}">상품이 마음에 들지 않음</td></tr>
+		            <tr><th>요청일</th><td th:text="${#temporals.format(request.requestDate, 'yyyy-MM-dd')}">2025-08-30</td></tr>
+		
+		            <!-- 반품 현황 선택 -->
+		            <tr>
+		                <th>반품 현황</th>
+		                <td>
+		                    <select name="status">
+		                        <option value="반품접수" th:selected="${request.status == '반품접수'}">반품접수</option>
+		                        <option value="반품 처리중" th:selected="${request.status == '반품 처리중'}">반품 처리중</option>
+		                        <option value="반품 불가" th:selected="${request.status == '반품 불가'}">반품 불가</option>
+		                        <option value="반품 완료" th:selected="${request.status == '반품 완료'}">반품 완료</option>
+		                    </select>
+		                </td>
+		            </tr>
+		
+		            <!-- 반품 불가 사유 입력 -->
+		            <tr>
+		                <th>불가 사유</th>
+		                <td>
+		                    <input type="text" name="rejectReason" th:value="${request.rejectReason}" placeholder="불가 사유를 입력하세요" />
+		                </td>
+		            </tr>
+		        </table>
+		
+				<section class="return-images" style="margin-top: 40px;">
+				    <h3>🖼️ 첨부 이미지</h3>
+				    <div th:if="${images != null and !images.isEmpty()}">
+				        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+				            <div th:each="img : ${images}">
+				                <img th:src="@{'/orders/return/image/' + ${img.imageId}}"
+				                     alt="반품 이미지"
+				                     style="width: 300px; border: 1px solid #ccc; padding: 5px;" />
+				            </div>
+				        </div>
+				    </div>
+				    <div th:if="${images == null or images.isEmpty()}">
+				        <p>첨부된 이미지가 없습니다.</p>
+				    </div>
+				</section>
+		
+		        <div style="margin-top: 20px;">
+		            <button type="submit" class="btn">💾 저장</button>
+		            <a th:href="@{/orders/return}" class="btn">🔙 목록으로</a>
+		        </div>
+		    </form>
+		</main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+</body>
+</html>

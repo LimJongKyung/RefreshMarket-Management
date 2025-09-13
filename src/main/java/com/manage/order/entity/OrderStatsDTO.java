@@ -29,6 +29,4 @@ public class OrderStatsDTO {
 	public void setTotalSum(Long totalSum) {
 		this.totalSum = totalSum;
 	}
-    
-    
 }

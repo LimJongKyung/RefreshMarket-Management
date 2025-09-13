@@ -1,0 +1,194 @@
+/* layout-container는 사이드바 + 메인 플렉스 */
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 메인 영역만 flex로 중앙 정렬 */
+.operationM {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 50px 20px;
+    background-color: #f9f7f1;
+}
+
+/* 카드 래퍼 */
+.operationM-wrapper {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* container 카드 폭과 중앙 정렬 */
+.operationM .container {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e0dcd3; /* 카드 외곽 구분 */
+}
+
+/* 제목 영역 */
+.operationM h2 {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #4a2f1a;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0dcd3; /* 제목 아래 구분선 */
+}
+
+/* 카드 내부 텍스트 블록 구분 */
+.operationM .card-body {
+    text-align: center;
+    width: 100%;
+}
+
+/* 이름 */
+.operationM .card-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* 아이디 */
+.operationM .card-subtitle {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #ccc; /* 이름과 아이디 사이 구분선 */
+}
+
+/* 카드 텍스트 */
+.operationM .card-text {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #444;
+    padding: 8px 12px;
+    border-bottom: 1px dashed #ddd; /* 각 텍스트 구분 */
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* 체크박스 그룹 전체 구분 */
+.operationM .mb-3 {
+    text-align: left;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f8f5ef;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* 체크박스 4개씩 한 줄 */
+.operationM .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px 15px;
+    margin-top: 10px;
+}
+
+/* 체크박스 개별 구분 */
+.operationM .checkbox-grid .form-check {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #f5f2ec;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.operationM .checkbox-grid .form-check:hover {
+    background-color: #f0e8dc;
+}
+
+/* 체크박스 입력 스타일 */
+.operationM .form-check-input {
+    accent-color: #4a2f1a;
+    width: 18px;
+    height: 18px;
+}
+
+.operationM .form-check-label {
+    font-weight: 500;
+    font-size: 15px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* 버튼 스타일 */
+.operationM .btn {
+    font-weight: 600;
+    padding: 10px 22px;
+    margin: 10px 5px 0 0;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+.operationM .btn-success {
+    background-color: #4a2f1a;
+    color: #fff;
+    border: 1px solid #4a2f1a;
+}
+
+.operationM .btn-success:hover {
+    background-color: #59371f;
+    border-color: #59371f;
+}
+
+.operationM .btn-primary {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #333;
+    text-decoration: none; /* 밑줄 제거 */
+    display: inline-block; /* 버튼처럼 */
+    text-align: center;
+}
+
+.operationM .btn-primary:hover {
+    background-color: #555;
+    border-color: #555;
+    text-decoration: none; /* 호버 시에도 밑줄 제거 */
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .operationM {
+        padding: 30px 15px;
+    }
+
+    .operationM h2 {
+        font-size: 28px;
+    }
+
+    .operationM .card-title {
+        font-size: 26px;
+    }
+
+    .operationM .card-subtitle {
+        font-size: 18px;
+    }
+
+    .operationM .card-text {
+        font-size: 14px;
+    }
+
+    .operationM .btn {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+
+    .operationM .checkbox-grid {
+        grid-template-columns: repeat(2, 1fr); /* 모바일 2개씩 */
+    }
+}
+

@@ -8,6 +8,7 @@
 <link href="/css/memberCSS/detailC.css" rel="stylesheet">
 </head>
 <body>
+	<th:block th:insert="~{template/fragments/block :: header}"></th:block>
 	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
     <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
     <div class="layout-container">
@@ -46,6 +47,26 @@
 			                <th>이메일</th>
 			                <td th:text="${member.email}">이메일</td>
 			            </tr>
+			            <tr>
+			            	<th>등급</th>
+			            	<td th:text="${member.grade}">등급</td>
+			            </tr>
+			            <tr>
+						    <th>보유 혜택</th>
+						    <td>
+						        <div th:if="${memberBenefits != null and #lists.size(memberBenefits) > 0}">
+						            <div class="benefit-card-container">
+						                <div th:each="b : ${memberBenefits}" class="benefit-card">
+						                    <div class="benefit-name" th:text="${b.benefitName}">혜택 이름</div>
+						                    <div class="benefit-desc" th:if="${b.benefitDescription != null}" th:text="${b.benefitDescription}">설명</div>
+						                </div>
+						            </div>
+						        </div>
+						        <div th:if="${memberBenefits == null or #lists.isEmpty(memberBenefits)}">
+						            <span class="no-benefit">보유한 혜택이 없습니다.</span>
+						        </div>
+						    </td>
+						</tr>
 			            <tr>
 			                <th>가입일</th>
 			                <td th:text="${#temporals.format(member.joinDate, 'yyyy-MM-dd HH:mm:ss')}">가입일</td>

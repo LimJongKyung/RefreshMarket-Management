@@ -1,15 +1,51 @@
+/* 메인 영역 */
 .order-list {
   padding: 2rem;
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #f9f9f9;
 }
 
+/* 제목 */
 .order-list h1 {
   font-size: 1.8rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   color: #333;
+  text-align: center;
 }
 
+/* 검색폼 */
+.order-list .search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.order-list .search-form select,
+.order-list .search-form input[type="text"] {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.order-list .search-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.order-list .search-form button:hover {
+  background-color: #0056b3;
+}
+
+/* 테이블 */
 .order-list table {
   width: 100%;
   border-collapse: collapse;
@@ -17,7 +53,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.order-list th, .order-list td {
+.order-list th,
+.order-list td {
   padding: 0.75rem 1rem;
   border: 1px solid #ddd;
   text-align: center;
@@ -48,4 +85,47 @@
 .order-list a:hover {
   color: #0056b3;
   text-decoration: underline;
+}
+
+/* 페이징 */
+.order-list .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.order-list .pagination span {
+  font-weight: 500;
+  color: #333;
+}
+
+.order-list .pagination div {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.order-list .pagination a {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.order-list .pagination a:hover {
+  background-color: #0056b3;
+}
+
+.new-label {
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 4px;
+    font-weight: bold;
 }

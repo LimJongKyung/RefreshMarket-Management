@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" class="h-100" data-bs-theme="auto" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:insert="~{template/fragments/block :: config}"></th:block>
+<link href="/css/orderCSS/returnlist.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+	<th:block th:insert="~{template/fragments/block :: header}"></th:block>
+	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+    <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <main class="return-list">
+		    <h2>📦 반품 요청 목록</h2>
+
+			<form th:action="@{/orders/returns}" method="get">
+			    <input type="text" name="keyword" th:value="${keyword}" placeholder="검색어 입력">
+			    <button type="submit">검색</button>
+			</form>
+			
+			<table>
+			    <thead>
+			        <tr>
+			            <th>ID</th><th>주문ID</th><th>회원ID</th><th>상품ID</th>
+			            <th>사유유형</th><th>요청일</th><th>반품 현황</th><th>불가 사유</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr th:each="r : ${returns}">
+			            <td>
+						    <a th:href="@{/orders/return/{id}(id=${r.returnId})}" th:text="${r.returnId}">1</a>
+						</td>
+			            <td th:text="${r.orderId}">1001</td>
+			            <td th:text="${r.memberId}">user01</td>
+			            <td th:text="${r.productId}">P123</td>
+			            <td th:text="${r.reasonType}">단순변심</td>
+			            <td>
+						    <span th:text="${#temporals.format(r.requestDate, 'yyyy-MM-dd')}">2025-08-30</span>
+						    
+						    <span th:if="${#temporals.format(r.requestDate, 'yyyy-MM-dd') == #temporals.format(T(java.time.LocalDate).now(), 'yyyy-MM-dd')}"
+						          style="color: red; font-weight: bold; margin-left: 5px;">🆕</span>
+						</td>
+			            <td th:text="${r.status}">반품접수</td>
+			            <td th:text="${r.rejectReason != null ? r.rejectReason : '-'}">-</td>
+			        </tr>
+			    </tbody>
+			</table>
+			
+			<div class="pagination">
+			    <span th:if="${page.hasPrevious()}">
+			        <a th:href="@{/orders/return(page=${page.number - 1}, keyword=${keyword})}">이전</a>
+			    </span>
+			
+			    <span>페이지 [[${page.number + 1}]] / [[${page.totalPages}]]</span>
+			
+			    <span th:if="${page.hasNext()}">
+			        <a th:href="@{/orders/return(page=${page.number + 1}, keyword=${keyword})}">다음</a>
+			    </span>
+			</div>
+		</main>
+	 </div>
+	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+</body>
+</html>

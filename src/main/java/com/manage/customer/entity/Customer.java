@@ -37,6 +37,20 @@ public class Customer {
     @Column(name = "JOIN_DATE")
     private LocalDateTime joinDate;
 
+    @Column(name = "GRADE", length = 10)
+    private String grade;
+    
+    @Column(name = "BENEFITS")
+    private String benefits;
+    
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -99,5 +113,13 @@ public class Customer {
 
 	public void setJoinDate(LocalDateTime joinDate) {
 		this.joinDate = joinDate;
+	}
+	
+	public String getBenefits() {
+	    return benefits;
+	}
+
+	public void setBenefits(String benefits) {
+	    this.benefits = benefits;
 	}
 }

@@ -111,3 +111,126 @@
   margin: 0;
 }
 
+.side-menu__item {
+    position: relative;
+}
+
+.side-menu__submenu {
+    display: none; 
+    position: absolute;
+    left: 0;       
+    top: 100%;     
+    background-color: #34495e; /* 사이드바 호버 색과 통일 */
+    border: none;   /* 경계선 제거 */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 180px; 
+    z-index: 100;
+    border-radius: 4px; /* 모서리 살짝 둥글게 */
+}
+
+.side-menu__submenu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #ecf0f1; /* 사이드바 링크 색과 통일 */
+    font-weight: bold;
+}
+
+.side-menu__item:hover .side-menu__submenu {
+    display: block; /* 마우스 오버 시 표시 */
+}
+
+.side-menu__submenu li a:hover {
+    background-color: #2c3e50; /* 메인 사이드바 배경과 약간 차이나게 호버 강조 */
+}
+
+.header-welcome-container {
+    background-color: #333; /* 헤더 전체 배경 */
+    text-align: right;
+    padding: 0.5rem 1rem;   /* 상하/좌우 여백 */
+}
+
+.header-welcome {
+    color: #ecf0f1;        /* 글자 색상 */
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.header-time {
+    color: #ecf0f1;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.logout {
+    display: inline-block;
+    color: white;
+    text-decoration: none;     /* 밑줄 제거 */
+    font-size: 14px;
+}
+
+.logout:hover {
+    background-color: #ececec; /* 호버 시 살짝 어두워짐 */
+    color: #333;
+    border-radius: 20px;
+}
+
+/* 전체 메뉴 아이템 */
+.main-menu__item {
+    position: relative;
+    list-style: none;
+}
+
+/* 상단 메뉴 링크 */
+.main-menu__link {
+    display: block;
+    padding: 10px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #343a40;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.main-menu__link:hover {
+    background-color: #495057;
+}
+
+/* 하위 메뉴 */
+.main-menu__item ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #212529;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    min-width: 160px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none; /* 기본은 숨김 */
+    z-index: 1000;
+}
+
+/* 하위 메뉴 항목 */
+.main-menu__item ul li a {
+    display: block;
+    padding: 10px 14px;
+    color: #f8f9fa;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.main-menu__item ul li a:hover {
+    background-color: #495057;
+}
+
+/* ✅ 메뉴에 마우스 올리면 하위 메뉴 보이기 */
+.main-menu__item:hover ul {
+    display: block;
+}

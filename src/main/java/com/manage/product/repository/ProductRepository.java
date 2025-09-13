@@ -1,6 +1,9 @@
 package com.manage.product.repository;
 
 import com.manage.product.entity.Product;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +14,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findByNameContainingIgnoreCase(String keyword, Pageable pageable);
     Page<Product> findByDescriptionContainingIgnoreCase(String keyword, Pageable pageable);
     Page<Product> findByCategory(String category, Pageable pageable);
+    
+    List<Product> findByNameContainingIgnoreCase(String keyword); // 혜택 상품 검색용
 }

@@ -85,3 +85,52 @@ main.detail-customer {
 .detail-customer form button.btn {
     border: none;
 }
+
+/* 카드 컨테이너 */
+.detail-customer .benefit-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+/* 개별 카드 */
+.detail-customer .benefit-card {
+    background-color: #f8f9fa;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    padding: 14px 18px;
+    width: calc(50% - 8px); /* 두 줄로 나눠짐 */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.detail-customer .benefit-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 혜택 이름 */
+.detail-customer .benefit-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+/* 혜택 설명 */
+.detail-customer .benefit-desc {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* 혜택 없음 메시지 */
+.detail-customer .no-benefit {
+    display: block;
+    padding: 10px;
+    background-color: #f1f3f5;
+    border-radius: 6px;
+    color: #666;
+    font-size: 0.95rem;
+    text-align: center;
+}

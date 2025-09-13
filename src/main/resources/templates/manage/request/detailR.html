@@ -1,58 +1,91 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      class="h-100" data-bs-theme="auto">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>요청 리스트</title>
-<th:block th:insert="~{template/fragments/block :: config}"></th:block>
-<link href="/css/main.css" rel="stylesheet">
-<link href="/css/requestCSS/requestdetail.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>요청 상세</title>
+    <th:block th:insert="~{template/fragments/block :: config}"></th:block>
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/requestCSS/requestdetail.css" rel="stylesheet">
 </head>
 <body>
-	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: header}"></th:block>
+    <th:block th:insert="~{template/fragments/block :: logo}"></th:block>
     <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
 
     <div class="layout-container">
-	    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+        <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
 
-	    <!-- 본문 영역 -->
-	    <main class="request-detail">
-		    <h1>요청 상세</h1>
+        <main class="request-detail">
+            <h1>요청 상세</h1>
 
-		    <table class="table table-bordered">
-		        <tr>
-		            <th>요청 ID</th>
-		            <td th:text="${request.requestId}"></td>
-		        </tr>
-		        <tr>
-		            <th>이름</th>
-		            <td th:text="${request.consultantName}"></td>
-		        </tr>
-		        <tr>
-		            <th>이메일</th>
-		            <td th:text="${request.consultantEmail}"></td>
-		        </tr>
-		        <tr>
-		            <th>상담 유형</th>
-		            <td th:text="${request.consultationType}"></td>
-		        </tr>
-		        <tr>
-		            <th>요청 내용</th>
-		            <td th:text="${request.consultantMessage}"></td>
-		        </tr>
-		        <tr>
-		            <th>요청 날짜</th>
-		            <td th:text="${#temporals.format(request.requestDate, 'yyyy-MM-dd HH:mm')}"></td>
-		        </tr>
-		    </table>
-		
-		    <div class="buttons">
-		        <a th:href="@{/requests}" class="btn">목록</a>
-		    </div>
-		</main>
-	</div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>요청 ID</th>
+                    <td th:text="${request.requestId}"></td>
+                </tr>
+                <tr>
+                	<th>회원 아이디</th>
+                	<td th:text="${request.memberId}"></td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td th:text="${request.consultantName}"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td th:text="${request.consultantEmail}"></td>
+                </tr>
+                <tr>
+                    <th>상담 유형</th>
+                    <td th:text="${request.consultationType}"></td>
+                </tr>
+                <tr>
+                    <th>요청 내용</th>
+                    <td th:text="${request.consultantMessage}"></td>
+                </tr>
+                <tr>
+                    <th>요청 날짜</th>
+                    <td th:text="${#temporals.format(request.requestDate, 'yyyy-MM-dd HH:mm')}"></td>
+                </tr>
+                
+                <!-- 기존 답변 표시 -->
+				<tr>
+				    <th>기존 답변</th>
+				    <td>
+				        <div id="existingAnswer">
+				            <p th:text="${request.answer != null ? request.answer : '등록된 답변이 없습니다.'}" 
+				               style="margin: 0; color: #333;"></p>
+				        </div>
+				    </td>
+				</tr>
+				
+				<!-- 답변 작성/수정 -->
+				<tr>
+				    <th>답변 작성/수정</th>
+				    <td>
+				        <textarea id="answerTextarea" rows="4" cols="50" 
+				                  placeholder="여기에 답변을 입력하세요"
+				                  style="width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; resize: vertical;"
+				                  th:text="${request.answer != null ? request.answer : ''}"></textarea>
+				        <br/><br/>
+				        <div class="answer-buttons" style="display: flex; gap: 10px;">
+				            <button type="button" class="btn btn-primary" 
+				                    th:onclick="'saveAnswer(' + ${request.requestId} + ')'">저장</button>
+				            <button type="button" class="btn btn-danger" 
+				                    th:onclick="'deleteAnswer(' + ${request.requestId} + ')'">삭제</button>
+				            <button type="button" class="btn btn-secondary" onclick="cancelEdit()">취소</button>
+				        </div>
+				    </td>
+				</tr>  
+            </table>
 
-	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+            <div class="buttons">
+                <a th:href="@{/requests}" class="btn">목록</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/request.js"></script>
+    <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
 </body>
 </html>

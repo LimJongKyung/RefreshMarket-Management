@@ -8,9 +8,28 @@
 		</th:block>
 	</head>
 	<body>
+		<th:block th:fragment="header">
+		    <div class="header-welcome-container">
+		        <span class="header-welcome" 
+		              th:text="${session.loginName} + '님 환영합니다. 관리등급: ' + ${session.loginGrade}">
+		        </span>
+		        <span id="sessionTimer" class="header-time"></span>
+		        <a class="logout" href="/">로그아웃</a>
+		    </div>
+		
+		    <!-- 서버에서 계산한 만료 시간 JS 변수로 전달 -->
+		    <script th:inline="javascript">
+			    /*<![CDATA[*/
+			    var sessionExpiryTimeStr = /*[[${session.sessionExpiryTime}]]*/ '0';
+			    var sessionExpiryTime = Number(sessionExpiryTimeStr);
+			    /*]]>*/
+			</script>
+		    <script src="/JS/block.js"></script>
+		</th:block>
+				
 		<th:block th:fragment="logo">
 		  <div class="site-logo">
-		    <a href="/" class="site-logo__link">
+		    <a href="/home" class="site-logo__link">
 		      <span class="site-logo__text">Refresh<span class="highlight">Market</span></span>
 		    </a>
 		  </div>
@@ -19,11 +38,15 @@
 		  	<nav class="main-menu">
 			    <ul class="main-menu__list">
 				     <li class="main-menu__item">
-				        <a class="main-menu__link" href="/">HOME</a>
+				        <a class="main-menu__link" href="/home">HOME</a>
 				     </li>
 				     <li class="main-menu__item">
-				        <a class="main-menu__link" href="/orders">주문현황</a>
-				     </li>
+				        <a class="main-menu__link" href="#">주문관리</a>
+				        <ul>
+				            <li><a href="/orders">고객주문</a></li>
+				            <li><a href="/orders/return">고객반품</a></li>
+				        </ul>
+				    </li>
 				     <li class="main-menu__item">
 				        <a class="main-menu__link" href="/customer">고객관리</a>
 				     </li>
@@ -43,8 +66,12 @@
 				        <a class="side-menu__link" href="/menus">메뉴관리</a>
 				    </li>
 				    <li class="side-menu__item">
-				        <a class="side-menu__link" href="#">운영방침관리</a>
-				    </li>
+					    <a class="side-menu__link" href="#">운영방침관리 ▾</a>
+					    <ul class="side-menu__submenu">
+					        <li><a href="/operationM">관리자 정책</a></li>
+					        <li><a href="/operationC">고객 정책</a></li>
+					    </ul>
+					</li>
 			    </ul>
 			</aside>
 		</th:block>

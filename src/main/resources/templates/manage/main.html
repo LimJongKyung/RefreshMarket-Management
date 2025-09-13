@@ -8,6 +8,7 @@
   <link href="/css/custom-stats.css" rel="stylesheet" />
 </head>
 <body>
+  <th:block th:insert="~{template/fragments/block :: header}"></th:block>
   <th:block th:insert="~{template/fragments/block :: logo}"></th:block>
   <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
   <div class="layout-container">
@@ -41,6 +42,60 @@
           </div>
         </div>
 
+		<!-- 일별 상품 판매량 -->
+		<div class="card mb-4">
+		  <div class="card-header bg-success text-white">일별 상품 판매량</div>
+		  <div class="card-body row">
+		    <!-- 표 -->
+		    <div class="table-wrapper">
+		      <table class="table table-hover table-bordered">
+		        <thead class="table-light">
+		          <tr>
+		            <th>날짜</th>
+		            <th>상품명</th>
+		            <th>판매 수량</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr th:each="productS : ${dailyProductSales}">
+		            <td th:text="${productS.orderDate}"></td>
+		            <td th:text="${productS.productName}"></td>
+		            <td th:text="${productS.totalQuantity} + '개'"></td>
+		          </tr>
+		        </tbody>
+		      </table>
+		    </div>
+		    <!-- 차트 -->
+		    <canvas id="dailyProductChart"></canvas>
+		  </div>
+		</div>
+		
+		<!-- 성별/연령 주문 통계 -->
+		<div class="card mb-4">
+		  <div class="card-header bg-info text-white">성별/연령 주문 통계</div>
+		  <div class="card-body row">
+		    <div class="table-wrapper">
+		      <table class="table table-hover table-bordered">
+		        <thead class="table-light">
+		          <tr>
+		            <th>성별</th>
+		            <th>연령</th>
+		            <th>주문 수</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr th:each="stat : ${genderAgeStats}">
+		            <td th:text="${stat.gender}"></td>
+		            <td th:text="${stat.age} + '세'"></td>
+		            <td th:text="${stat.orderCount} + '건'"></td>
+		          </tr>
+		        </tbody>
+		      </table>
+		    </div>
+		    <canvas id="genderAgeChart"></canvas>
+		  </div>
+		</div>
+		
         <!-- 회원 가입 통계 -->
         <div class="card mb-4">
           <div class="card-header bg-success text-white">회원 가입 통계 (일별)</div>
@@ -101,9 +156,11 @@
   <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
 
   <script th:inline="javascript">
-    let orderStats = /*[[${orderStats}]]*/ [];
-    let memberStats = /*[[${customerStats}]]*/ [];
-    let requestStats = /*[[${requestStats}]]*/ [];
+	  let orderStats = /*[[${orderStats}]]*/ [];
+	  let memberStats = /*[[${customerStats}]]*/ [];
+	  let requestStats = /*[[${requestStats}]]*/ [];
+	  let dailyProductSales = /*[[${dailyProductSales}]]*/ [];
+	  let genderStats = /*[[${genderAgeStats}]]*/ [];
   </script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="/JS/main.js"></script>

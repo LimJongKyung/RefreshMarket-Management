@@ -20,6 +20,7 @@
 </style>
 </head>
 <body>
+	<th:block th:insert="~{template/fragments/block :: header}"></th:block>
 	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
     <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
     <div class="layout-container">
@@ -29,8 +30,8 @@
 		  <h2>제품 정보 수정</h2>
 		
 		  <form th:action="@{/product/update}" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
-		    
-		    <!-- 제품 ID (수정 불가) -->
+		
+		    <!-- 제품 ID -->
 		    <label for="productId">제품 ID:</label><br/>
 		    <input type="text" id="productId" name="productId" th:value="${product.productId}" readonly required /><br/><br/>
 		
@@ -38,10 +39,27 @@
 		    <label for="name">제품명:</label><br/>
 		    <input type="text" id="name" name="name" th:value="${product.name}" required /><br/><br/>
 		
-		    <!-- 제품 설명 -->
+		    <!-- 설명 -->
 		    <label for="description">설명:</label><br/>
 		    <textarea id="description" name="description" rows="4" cols="50" required
 		              th:text="${product.description}"></textarea><br/><br/>
+		
+			<!-- 기존 추가 이미지 위쪽 또는 아래에 배치 -->
+			<label for="detailImages">상세페이지 이미지 업로드:</label><br/>
+			<input type="file" id="detailImages" name="detailImages" multiple accept="image/*" /><br/><br/>
+			
+			<!-- 기존 상세 이미지 출력 및 삭제 체크박스 -->
+			<label>상세페이지 기존 이미지:</label><br/>
+			<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+			    <div th:each="img : ${detailImages}">
+			        <img th:src="@{/product/detailImage/{id}(id=${img.id})}" 
+			             alt="상세 이미지" 
+			             style="width:80px; height:80px; object-fit:cover;" />
+			        <label>
+			            <input type="checkbox" name="deleteDetailImageIds" th:value="${img.id}"/> 삭제
+			        </label>
+			    </div>
+			</div><br/>
 		
 		    <!-- 가격 -->
 		    <label for="price">가격:</label><br/>
@@ -51,68 +69,73 @@
 		    <label for="stock">재고 수량:</label><br/>
 		    <input type="number" id="stock" name="stock" min="0" th:value="${product.stock}" /><br/><br/>
 		
-		    <!-- 이미지 업로드 -->
-			<label for="imageFile">이미지 업로드:</label><br/>
-			<input type="file" id="imageFile" name="imageFile" accept="image/*" /><br/><br/>
-			
-			<!-- 이미지 미리보기 (이미지가 있을 경우) -->
-			<div th:if="${product.imageData}">
-			  <img th:src="@{/product/image/{id}(id=${product.productId})}" alt="이미지" style="width:80px; height:80px; object-fit:cover;" />
-			</div>
-			
-			<label for="category">카테고리:</label><br/>
-			<select id="category" name="category">
-			    <option value="">-- 선택하세요 --</option>
-			    <option th:each="menu : ${categories}"
-			            th:value="${menu.name}"
-			            th:text="${menu.position == 'header' ? '상단 - ' + menu.name : '사이드바 - ' + menu.name}"
-			            th:selected="${product.category} == ${menu.name}">
-			    </option>
-			</select><br/><br/>
+		    <!-- 메인 이미지 업로드 -->
+		    <label for="imageFile">메인 업로드:</label><br/>
+		    <input type="file" id="imageFile" name="imageFile" accept="image/*" /><br/><br/>
 		
-			<label>메인 화면에 추가하기:</label><br/>
-
-			<label>
-			  <input type="checkbox" name="mainDisplay" value="sale"
-			         th:checked="${product.mainDisplay != null and product.mainDisplay.contains('sale')}" />
-			  메인 오늘의 세일
-			</label><br/>
-			
-			<label>
-			  <input type="checkbox" name="mainDisplay" value="group"
-			         th:checked="${product.mainDisplay != null and product.mainDisplay.contains('group')}" />
-			  메인 공동 구매
-			</label><br/>
-			
-			<label>
-			  <input type="checkbox" name="mainDisplay" value="promotion"
-			         th:checked="${product.mainDisplay != null and product.mainDisplay.contains('promotion')}" />
-			  메인 중소기업 제품 홍보
-			</label><br/><br/>
+		    <!-- 기존 메인 이미지 -->
+		    <div th:if="${product.imageData}">
+		      <img th:src="@{/product/image/{id}(id=${product.productId})}" alt="이미지" style="width:80px; height:80px; object-fit:cover;" />
+		    </div><br/>
 		
-			<!-- 판매자 -->
-			<label for="seller">판매자:</label><br>
-			<input type="text" id="seller" name="seller" required
-			       th:value="${product.seller}"><br><br>
-			
-			<!-- 제조업체 -->
-			<label for="manufacturer">제조업체:</label><br>
-			<input type="text" id="manufacturer" name="manufacturer" required
-			       th:value="${product.manufacturer}"><br><br>
-			
-			<!-- 상세선택: 사용자가 여러 개를 콤마 등으로 구분해서 입력 -->
-			<label for="detailOption">상세선택 (콤마로 구분하여 여러 개 입력 가능):</label><br>
-			<input type="text" id="detailOption" name="detailOption"
-			       placeholder="예: 옵션1, 옵션2, 옵션3"
-			       th:value="${product.detailOption}"><br><br>
-			
-			<!-- 옵션별 추가 가격: 상세 옵션 개수에 맞춰 콤마 구분하여 입력 -->
-			<label for="detailOptionPrice">상세 옵션별 추가 가격 (콤마로 구분하여 입력):</label><br>
-			<input type="text" id="detailOptionPrice" name="detailOptionPrice"
-			       placeholder="예: 0, 1000, 2000"
-			       th:value="${product.detailOptionPrice}"><br><br>
+		    <!-- 추가 이미지 -->
+		    <label for="extraImages">추가 이미지 업로드:</label><br/>
+		    <input type="file" id="extraImages" name="extraImages" multiple accept="image/*" /><br/><br/>
 		
-		    <!-- 버튼 영역 -->
+		    <!-- 기존 추가 이미지 -->
+		    <label>추가 이미지 기존 이미지:</label><br/>
+			<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+			    <div th:each="img : ${extraImages}">
+			        <img th:src="@{/product/extraImage/{id}(id=${img.id})}" 
+			             alt="추가 이미지" 
+			             style="width:80px; height:80px; object-fit:cover;" />
+			        <label>
+			            <input type="checkbox" name="deleteImageIds" th:value="${img.id}"/> 삭제
+			        </label>
+			    </div>
+			</div><br/>
+		
+		    <!-- 카테고리 -->
+		    <label for="category">카테고리:</label><br/>
+		    <select id="category" name="category">
+		      <option value="">-- 선택하세요 --</option>
+		      <option th:each="menu : ${categories}"
+		              th:value="${menu.name}"
+		              th:text="${menu.name}"
+		              th:selected="${product.category} == ${menu.name}">
+		      </option>
+		    </select><br/><br/>
+		
+		    <!-- 메인 화면 표시 -->
+		    <label>메인 화면에 추가하기:</label><br/>
+		    <label>
+		      <input type="checkbox" name="mainDisplay" value="sale"
+		             th:checked="${product.mainDisplay != null and product.mainDisplay.contains('sale')}" /> 메인 오늘의 세일
+		    </label><br/>
+		    <label>
+		      <input type="checkbox" name="mainDisplay" value="group"
+		             th:checked="${product.mainDisplay != null and product.mainDisplay.contains('group')}" /> 메인 공동 구매
+		    </label><br/>
+		    <label>
+		      <input type="checkbox" name="mainDisplay" value="promotion"
+		             th:checked="${product.mainDisplay != null and product.mainDisplay.contains('promotion')}" /> 메인 중소기업 제품 홍보
+		    </label><br/><br/>
+		
+		    <!-- 판매자 / 제조업체 -->
+		    <label for="seller">판매자:</label><br>
+		    <input type="text" id="seller" name="seller" required th:value="${product.seller}"><br><br>
+		
+		    <label for="manufacturer">제조업체:</label><br>
+		    <input type="text" id="manufacturer" name="manufacturer" required th:value="${product.manufacturer}"><br><br>
+		
+		    <!-- 상세 옵션 -->
+		    <label for="detailOption">상세선택:</label><br>
+		    <input type="text" id="detailOption" name="detailOption" th:value="${product.detailOption}"><br><br>
+		
+		    <label for="detailOptionPrice">상세 옵션별 추가 가격:</label><br>
+		    <input type="text" id="detailOptionPrice" name="detailOptionPrice" th:value="${product.detailOptionPrice}"><br><br>
+		
+		    <!-- 버튼 -->
 		    <div class="button-group">
 		      <button type="submit">수정하기</button>
 		      <a href="/product" class="btn btn-secondary">목록으로</a>
@@ -120,21 +143,20 @@
 		
 		  </form>
 		</main>
-
 	 </div>
 	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="/JS/modifyC.js"></script>
+	<script src="/JS/modifyP.js"></script>
 	<script>
-function validateProductForm() {
-  const price = document.getElementById("price").value;
-  const stock = document.getElementById("stock").value;
-  if (price < 0 || stock < 0) {
-    alert("가격과 재고는 0 이상이어야 합니다.");
-    return false;
-  }
-  return true;
-}
-</script>
-</body>
+		function validateProductForm() {
+		  const price = document.getElementById("price").value;
+		  const stock = document.getElementById("stock").value;
+		  if (price < 0 || stock < 0) {
+		    alert("가격과 재고는 0 이상이어야 합니다.");
+		    return false;
+		  }
+		  return true;
+		}
+		</script>
+	</body>
 </html>

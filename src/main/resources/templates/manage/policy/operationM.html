@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <title>Insert title here</title>
+  <th:block th:insert="~{template/fragments/block :: config}"></th:block>
+  <link href="/css/main.css" rel="stylesheet" />
+  <link href="/css/policyCSS/operationM.css" rel="stylesheet" />
+</head>
+<body>
+  <th:block th:insert="~{template/fragments/block :: header}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+  <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+	    <main class="operationM">
+		    <h2>운영방침 관리 - 관리자용</h2>
+		    <table>
+			    <thead>
+			        <tr>
+			            <th>아이디</th>
+			            <th>이름</th>
+			            <th>등급</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr th:each="cust : ${adminCustomers}">
+			            <td>
+			                <a th:href="@{'/operationM/detail/' + ${cust.id}}" 
+			                   th:text="${cust.id}">ID</a>
+			            </td>
+			            <td>
+			                <a th:href="@{'/operationM/detail/' + ${cust.id}}" 
+			                   th:text="${cust.name}">Name</a>
+			            </td>
+			            <td th:text="${cust.grade}">Grade</td>
+			        </tr>
+			    </tbody>
+			</table>
+		</main>
+	  </div>
+  <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/JS/main.js"></script>
+</body>
+</html>

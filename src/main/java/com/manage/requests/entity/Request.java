@@ -30,6 +30,12 @@ public class Request {
 
     @Column(name = "REQUEST_DATE")
     private LocalDateTime requestDate;
+    
+    @Column(name = "ANSWER", length = 500)
+    private String answer;
+    
+    @Column(name = "MEMBER_ID", length = 100)
+    private String memberId;
 
     // 기본 생성자
     public Request() {
@@ -56,4 +62,10 @@ public class Request {
 
     public LocalDateTime getRequestDate() { return requestDate; }
     public void setRequestDate(LocalDateTime requestDate) { this.requestDate = requestDate; }
+
+	public String getAnswer() { return answer; }
+	public void setAnswer(String answer) { this.answer = answer; }
+
+	public String getMemberId() { return memberId; }
+	public void setMemberId(String memberId) { this.memberId = memberId; }		
 }

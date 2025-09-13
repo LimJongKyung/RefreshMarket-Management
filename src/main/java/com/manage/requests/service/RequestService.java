@@ -8,4 +8,6 @@ public interface RequestService {
 
     Page<Request> getRequests(String keyword, Pageable pageable);
     Request getRequestById(Long id);
+    void saveAnswer(Long id, String answer);
+    void deleteAnswer(Long id);
 }

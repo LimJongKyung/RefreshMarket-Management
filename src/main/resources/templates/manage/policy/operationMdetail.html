@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <title>고객 상세 정보</title>
+  <th:block th:insert="~{template/fragments/block :: config}"></th:block>
+  <link href="/css/main.css" rel="stylesheet" />
+  <link href="/css/policyCSS/operationMdetail.css" rel="stylesheet" />
+</head>
+<body>
+  <th:block th:insert="~{template/fragments/block :: header}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+
+  <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+
+    <main class="operationM" th:fragment="content">
+      <div class="container mt-5">
+        <h2 class="mb-4">고객 상세 정보</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title" th:text="${customer.name}">이름</h5>
+            <h6 class="card-subtitle mb-2 text-muted" th:text="'아이디: ' + ${customer.id}">아이디</h6>
+
+            <p class="card-text"><strong>등급:</strong> <span th:text="${customer.grade}">등급</span></p>
+            <p class="card-text"><strong>전화번호:</strong> <span th:text="${customer.phoneNumber}">전화번호</span></p>
+            <p class="card-text"><strong>이메일:</strong> <span th:text="${customer.email}">이메일</span></p>
+            <p class="card-text"><strong>주소:</strong> <span th:text="${customer.address}">주소</span></p>
+            <p class="card-text"><strong>등록번호:</strong> <span th:text="${customer.registrationNumber}">등록번호</span></p>
+            <p class="card-text">
+              <strong>가입일:</strong>
+              <span th:text="${#temporals.format(customer.joinDate, 'yyyy-MM-dd HH:mm')}"></span>
+            </p>
+
+            <!-- 권한 체크박스 폼 -->
+            <form th:action="@{/operationM/assignRoles}" method="post">
+              <input type="hidden" name="customerId" th:value="${customer.id}" />
+
+              <div class="mb-3">
+			    <label><strong>권한 선택:</strong></label><br>
+			
+			    <div class="checkbox-grid">
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="게시글 삭제" id="rolePost"
+			                   th:checked="${customerRoles?.contains('게시글 삭제')}" />
+			            <label class="form-check-label" for="rolePost">게시글 삭제</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="댓글 관리" id="roleComment"
+			                   th:checked="${customerRoles?.contains('댓글 관리')}" />
+			            <label class="form-check-label" for="roleComment">댓글 관리</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="회원 관리" id="roleMember"
+			                   th:checked="${customerRoles?.contains('회원 관리')}" />
+			            <label class="form-check-label" for="roleMember">회원 관리</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="상품 관리" id="roleProduct"
+			                   th:checked="${customerRoles?.contains('상품 관리')}" />
+			            <label class="form-check-label" for="roleProduct">상품 관리</label>
+			        </div>
+			
+					<div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="메뉴 관리" id="roleMember"
+			                   th:checked="${customerRoles?.contains('메뉴 관리')}" />
+			            <label class="form-check-label" for="roleMenu">메뉴 관리</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="할인 정책 설정" id="roleDiscount"
+			                   th:checked="${customerRoles?.contains('할인 정책 설정')}" />
+			            <label class="form-check-label" for="roleDiscount">할인 정책 설정</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="관리자 계정 관리" id="roleAdminManage"
+			                   th:checked="${customerRoles?.contains('관리자 계정 관리')}" />
+			            <label class="form-check-label" for="roleAdminManage">관리자 계정 관리</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="공지사항 작성 및 삭제" id="roleNotice"
+			                   th:checked="${customerRoles?.contains('공지사항 작성 및 삭제')}" />
+			            <label class="form-check-label" for="roleNotice">공지사항 작성 및 삭제</label>
+			        </div>
+			
+			        <div class="form-check">
+			            <input class="form-check-input" type="checkbox" name="roles" value="정책 설정" id="rolePolicy"
+			                   th:checked="${customerRoles?.contains('정책 설정')}" />
+			            <label class="form-check-label" for="rolePolicy">정책 설정</label>
+			        </div>
+			    </div>
+			</div>
+
+              <!-- 버튼 유지 -->
+              <button type="submit" class="btn btn-success mt-2">권한 수정</button>
+              <a href="/operationM" class="btn btn-primary mt-2">뒤로가기</a>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/JS/main.js"></script>
+</body>
+</html>

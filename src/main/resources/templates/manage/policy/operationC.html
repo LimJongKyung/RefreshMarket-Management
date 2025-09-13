@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <title>혜택 관리</title>
+  <th:block th:insert="~{template/fragments/block :: config}"></th:block>
+  <link href="/css/main.css" rel="stylesheet" />
+  <link href="/css/policyCSS/operationC.css" rel="stylesheet" />
+</head>
+<body>
+  <th:block th:insert="~{template/fragments/block :: header}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: logo}"></th:block>
+  <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
+  
+  <div class="layout-container">
+    <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
+
+    <main class="benefit-management">
+      <h2>혜택 관리</h2>
+
+      <div>
+        <label>혜택 이름:</label>
+        <input type="text" id="benefitName" placeholder="혜택 이름">
+
+        <label>대상:</label>
+        <select id="benefitTarget">
+          <option value="전체 상품">전체 상품</option>
+          <option value="특정 상품">특정 상품</option>
+          <option value="택배비">택배비</option>
+        </select>
+
+        <label>할인 타입:</label>
+        <select id="benefitType">
+          <option value="금액 할인">금액 할인</option>
+          <option value="퍼센트 할인">퍼센트 할인</option>
+        </select>
+
+        <div id="discountValueDiv">
+          <input type="number" id="discountValue" placeholder="할인 값">
+          <span id="discountUnit">원</span>
+        </div>
+
+        <div id="productSearchDiv" style="display:none;">
+          <input type="text" id="productSearch" placeholder="상품 검색">
+          <button id="searchProductBtn">검색</button>
+          <ul id="productResults" style="border:1px solid #ccc; max-height:100px; overflow-y:auto; padding-left:0;"></ul>
+        </div>
+
+        <button id="createBtn">추가</button>
+      </div>
+
+      <table border="1" style="margin-top:20px; width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>혜택 이름</th>
+            <th>설명</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody id="benefitTable"></tbody>
+      </table>
+    </main>
+  </div>
+
+  <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
+  <script src="/JS/operationC.js"></script>
+</body>
+</html>

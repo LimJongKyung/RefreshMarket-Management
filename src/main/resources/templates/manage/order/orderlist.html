@@ -8,41 +8,69 @@
 <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
+	<th:block th:insert="~{template/fragments/block :: header}"></th:block>
 	<th:block th:insert="~{template/fragments/block :: logo}"></th:block>
     <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
     <div class="layout-container">
     <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
-	    <!-- 본문 영역 -->
 	    <main class="order-list">
-	      	<h1>주문 현황</h1>
-			<table border="1">
-			    <tr>
-			        <th>주문 ID</th>
-			        <th>주문자</th>
-			        <th>상품명</th>
-			        <th>총 수량</th>
-			        <th>결제방식</th>
-			        <th>결제상태</th>
-			        <th>주문상태</th>
-			        <th>주문일</th>
-			        <th>액션</th>
-			    </tr>
-			    <tr th:each="order : ${orders}">
-			        <td th:text="${order.orderId}"></td>
-			        <td th:text="${order.customerName}"></td>
-			        <td th:text="${orderProductNames[order.orderId]}"></td>
-			        <td th:text="${order.quantity}"></td>
-			        <td th:text="${order.paymentMethod}"></td>
-			        <td th:text="${order.bankStatus}"></td>
-			        <td th:text="${order.orderStatus}"></td>
-			        <td th:text="${order.orderDate}"></td>
-			        <td>
-			            <a th:href="@{/orders/edit/{id}(id=${order.orderId})}">수정</a> |
-			            <a th:href="@{/orders/delete/{id}(id=${order.orderId})}">삭제</a>
-			        </td>
-			    </tr>
-			</table>
-	    </main>
+		    <h1>주문 현황</h1>
+		
+		    <!-- 검색폼 -->
+		    <form method="get" action="/orders" class="search-form">
+		        <select name="searchType">
+		            <option value="customerName" th:selected="${param.searchType == 'customerName'}">고객명</option>
+		            <option value="orderStatus" th:selected="${param.searchType == 'orderStatus'}">주문상태</option>
+		        </select>
+		        <input type="text" name="keyword" placeholder="검색어 입력" th:value="${param.keyword}">
+		        <button type="submit">검색</button>
+		    </form>
+		
+		    <!-- 테이블 -->
+		    <table>
+		        <thead>
+		            <tr>
+		                <th>주문 ID</th>
+		                <th>주문자</th>
+		                <th>상품명</th>
+		                <th>총 수량</th>
+		                <th>결제방식</th>
+		                <th>결제상태</th>
+		                <th>주문상태</th>
+		                <th>주문일</th>
+		                <th>액션</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr th:each="order : ${orders}">
+		                <td th:text="${order.orderId}"></td>
+		                <td th:text="${order.customerName}"></td>
+		                <td>
+						    <span th:if="${isNewMap[order.orderId]}" class="new-label">NEW</span>
+						    <span th:text="${orderProductNames[order.orderId]}"></span>
+						</td>
+		                <td th:text="${order.quantity}"></td>
+		                <td th:text="${order.paymentMethod}"></td>
+		                <td th:text="${order.bankStatus}"></td>
+		                <td th:text="${order.orderStatus}"></td>
+		                <td th:text="${order.orderDate}"></td>
+		                <td>
+		                    <a th:href="@{/orders/edit/{id}(id=${order.orderId})}">수정</a> |
+		                    <a th:href="@{/orders/delete/{id}(id=${order.orderId})}">삭제</a>
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+		
+		    <!-- 페이징 -->
+		    <div class="pagination">
+		        <span th:text="'페이지 ' + (${currentPage} + 1) + ' / ' + ${totalPages}"></span>
+		        <div>
+		            <a th:if="${currentPage > 0}" th:href="@{/orders(page=${currentPage - 1}, searchType=${param.searchType}, keyword=${param.keyword})}">이전</a>
+		            <a th:if="${currentPage + 1 < totalPages}" th:href="@{/orders(page=${currentPage + 1}, searchType=${param.searchType}, keyword=${param.keyword})}">다음</a>
+		        </div>
+		    </div>
+		</main>
 	 </div>
 	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
 </body>

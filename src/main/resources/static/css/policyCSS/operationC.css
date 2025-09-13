@@ -1,0 +1,150 @@
+/* ====== 전체 레이아웃 ====== */
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.benefit-management {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ====== 입력 폼 영역 ====== */
+.benefit-management div {
+  margin-bottom: 20px;
+}
+
+.benefit-management label {
+  display: inline-block;
+  width: 80px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.benefit-management input[type="text"],
+.benefit-management input[type="number"],
+.benefit-management select {
+  padding: 6px 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#discountValueDiv {
+  display: inline-block;
+}
+
+#discountUnit {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+/* ====== 검색 영역 ====== */
+#productSearchDiv {
+  margin-top: 10px;
+}
+
+#productSearch {
+  width: 200px;
+}
+
+#searchProductBtn {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#searchProductBtn:hover {
+  background-color: #0056b3;
+}
+
+#productResults {
+  list-style: none;
+  margin-top: 5px;
+  padding-left: 0;
+}
+
+#productResults li {
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+#productResults li:hover {
+  background-color: #e9ecef;
+}
+
+/* ====== 버튼 ====== */
+#createBtn {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#createBtn:hover {
+  background-color: #218838;
+}
+
+/* ====== 테이블 ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f1f1f1;
+}
+
+table td button {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+table td button:hover {
+  opacity: 0.8;
+}
+
+table td button:nth-child(1) { /* 수정 */
+  background-color: #ffc107;
+  color: #fff;
+}
+
+table td button:nth-child(2) { /* 삭제 */
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* ====== 반응형 ====== */
+@media (max-width: 768px) {
+  .benefit-management label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .benefit-management input,
+  .benefit-management select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #discountValueDiv {
+    display: block;
+  }
+}
