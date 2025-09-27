@@ -43,6 +43,17 @@ public class Customer {
     @Column(name = "BENEFITS")
     private String benefits;
     
+    @Column(name = "POINT", nullable = false)
+    private Integer point = 0;
+
+    public Integer getPoint() {
+        return point;
+    }
+
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+    
 	public String getGrade() {
 		return grade;
 	}

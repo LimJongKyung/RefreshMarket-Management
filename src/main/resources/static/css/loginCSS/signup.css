@@ -1,0 +1,111 @@
+/* 전체 레이아웃 */
+.signup {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 제목 */
+.signup h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* 라벨 */
+.signup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* 입력 필드 */
+.signup input[type="text"],
+.signup input[type="password"],
+.signup input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* 버튼 */
+.signup button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* 중복확인 버튼 */
+.signup button[type="button"] {
+  background-color: #2196F3;
+  margin-left: 10px;
+}
+
+/* 버튼 호버 효과 */
+.signup button:hover {
+  background-color: #45a049;
+}
+
+.signup button[type="button"]:hover {
+  background-color: #1976D2;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .signup {
+    padding: 20px;
+  }
+
+  .signup button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .signup button[type="button"] {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+.message {
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
+
+.message.valid {
+  color: green;
+}
+
+.message.invalid {
+  color: red;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: white;
+  background-color: #333;
+  padding: 10px 20px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+  background-color: #45a049;
+}

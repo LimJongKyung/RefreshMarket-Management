@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
+	<head>
+	  <meta charset="UTF-8" />
+	  <title>Insert title here</title>
+	  <th:block th:insert="~{template/fragments/block :: config}"></th:block>
+	  <link href="/css/loginCSS/findid.css" rel="stylesheet" />
+	</head>
+	<body>
+		<main class="find-id">
+		  <h2>아이디찾기</h2>
+		
+		  <!-- 메시지 출력 -->
+		  <div th:if="${msg}" style="color: red;">
+		    <p th:text="${msg}"></p>
+		  </div>
+		
+		  <form method="post" action="/send-id">
+		    <label for="name">이름</label>
+		    <input type="text" name="name" required />
+		
+		    <label for="email">이메일</label>
+		    <input type="email" name="email" required />
+		
+		    <button type="submit">아이디 찾기</button>
+		  </form>
+		
+		  <!-- 로그인 화면으로 이동 버튼 -->
+		  <div style="text-align: center; margin-top: 20px;">
+		    <a href="/" style="text-decoration: none; color: white; background-color: #333; padding: 10px 20px; border-radius: 6px; display: inline-block;">
+		      로그인 화면으로 돌아가기
+		    </a>
+		  </div>
+		</main>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</html>

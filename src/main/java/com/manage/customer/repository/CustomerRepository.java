@@ -3,6 +3,7 @@ package com.manage.customer.repository;
 import com.manage.customer.entity.Customer;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -68,4 +69,10 @@ public interface CustomerRepository extends JpaRepository<Customer, String> {
     	    ORDER BY gender, age
     	""", nativeQuery = true)
     	List<Object[]> getGenderAgeOrderStats();
+    	
+    	boolean existsById(String id);
+    	
+    Optional<Customer> findByNameAndEmail(String name, String email);
+    
+    Optional<Customer> findByIdAndName(String id, String name);
 }

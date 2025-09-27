@@ -17,10 +17,10 @@ import com.manage.benefit.repository.BenefitRepository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Arrays;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.data.domain.Page;
@@ -227,5 +227,42 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<MemberBenefit> getBenefitsByMemberId(String memberId) {
         return memberBenefitRepository.findByMemberId(memberId);
+    }
+    
+    @Override
+    public void registerCustomer(Customer customer) {
+        if (customerRepository.existsById(customer.getId())) {
+            throw new IllegalArgumentException("이미 존재하는 ID입니다.");
+        }
+
+        customer.setJoinDate(LocalDateTime.now());
+        customer.setGrade("일반회원"); // 기본 등급 설정
+        customer.setBenefits("");     // 초기 혜택 없음
+
+        customerRepository.save(customer);
+    }
+    
+    @Override
+    public boolean existsById(String id) {
+        return customerRepository.existsById(id);
+    }
+    
+    @Override
+    public Optional<Customer> findByNameAndEmail(String name, String email) {
+        return customerRepository.findByNameAndEmail(name, email);
+    }
+    
+    @Override
+    public Optional<Customer> findByIdAndName(String id, String name) {
+        return customerRepository.findById(id)
+                .filter(c -> c.getName().equals(name));
+    }
+
+    @Override
+    public void updatePassword(String id, String newPassword) {
+        customerRepository.findById(id).ifPresent(c -> {
+            c.setPasswd(newPassword);
+            customerRepository.save(c);
+        });
     }
 }

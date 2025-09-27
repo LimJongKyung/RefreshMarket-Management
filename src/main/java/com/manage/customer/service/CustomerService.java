@@ -8,6 +8,7 @@ import com.manage.customer.entity.MemberCountDTO;
 import com.manage.customer.entity.RequestCountDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 
@@ -35,4 +36,13 @@ public interface CustomerService {
     List<Benefit> searchBenefits(String keyword);
     
     List<GenderAgeOrderDTO> getGenderAgeOrderStats(); // 구매자 성별 통계
+    
+    void registerCustomer(Customer customer); // 회원가입
+    
+    Optional<Customer> findByNameAndEmail(String name, String email);
+    
+    boolean existsById(String id);
+    
+    Optional<Customer> findByIdAndName(String id, String name);
+    void updatePassword(String id, String newPassword);
 }

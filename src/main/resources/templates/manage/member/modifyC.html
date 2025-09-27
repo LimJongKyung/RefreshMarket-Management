@@ -76,6 +76,10 @@
 		        </select>
 		        <br/><br/>
 		
+				<!-- 포인트 -->
+				<label for="point">보유 포인트:</label><br/>
+				<input type="number" id="point" name="point" th:value="${member.point}" min="0" required /><br/><br/>
+		
 		        <!-- 혜택 관리 -->
 		        <div class="customer-benefit">
 		            <h3>혜택 관리</h3>
@@ -110,7 +114,6 @@
 		        </div>
 		    </form>
 		</main>
-
 	 </div>
 	<th:block th:insert="~{template/fragments/block :: footer}"></th:block>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
