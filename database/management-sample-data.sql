@@ -22,4 +22,8 @@ WHEN NOT MATCHED THEN
     INSERT (member_id, perm_name)
     VALUES (source.member_id, source.perm_name);
 
+UPDATE member
+SET grade = '운영자'
+WHERE id = 'portfolio';
+
 COMMIT;
