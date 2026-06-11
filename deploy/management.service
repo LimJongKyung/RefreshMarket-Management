@@ -1,0 +1,17 @@
+[Unit]
+Description=RefreshMarket Management Spring Boot application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=opc
+WorkingDirectory=/opt/refreshmarket-management/app
+EnvironmentFile=/opt/refreshmarket-management/management.env
+ExecStart=/opt/refreshmarket-management/java/bin/java -Xms96m -Xmx256m -XX:+UseSerialGC -jar /opt/refreshmarket-management/app/Management-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

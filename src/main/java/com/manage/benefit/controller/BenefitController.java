@@ -3,13 +3,11 @@ package com.manage.benefit.controller;
 import com.manage.benefit.entity.Benefit;
 import com.manage.benefit.service.BenefitService;
 import com.manage.product.entity.Product;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/benefits")
-@RequiredArgsConstructor
 public class BenefitController {
 
     private final BenefitService benefitService;

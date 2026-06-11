@@ -8,8 +8,6 @@ import com.manage.product.repository.ProductImageRepository;
 import com.manage.product.repository.ProductRepository;
 
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
 	private final ProductRepository productRepository;

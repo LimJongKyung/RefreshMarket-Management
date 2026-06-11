@@ -1,0 +1,26 @@
+ALTER TABLE member ADD (
+    join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    benefits VARCHAR2(1000)
+);
+
+CREATE TABLE benefit (
+    name VARCHAR2(255) PRIMARY KEY,
+    description VARCHAR2(1000)
+);
+
+CREATE TABLE admin_permission (
+    member_id VARCHAR2(50) PRIMARY KEY,
+    perm_name VARCHAR2(500) NOT NULL,
+    CONSTRAINT fk_admin_permission_member
+        FOREIGN KEY (member_id) REFERENCES member(id)
+);
+
+CREATE SEQUENCE menu_seq START WITH 100 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE product_id_seq START WITH 100 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE product_image_seq START WITH 100 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE product_detail_image_seq START WITH 100 INCREMENT BY 1 NOCACHE;
+
+UPDATE member
+SET join_date = COALESCE(join_date, CURRENT_TIMESTAMP);
+
+COMMIT;

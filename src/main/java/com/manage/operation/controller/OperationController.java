@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import lombok.RequiredArgsConstructor;
 import com.manage.customer.service.CustomerService;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class OperationController {
 
     private final CustomerService customerService;

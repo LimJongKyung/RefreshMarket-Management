@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.manage.customer.entity.AdminPermission;
 
-public interface AdminPermissionRepository extends JpaRepository<AdminPermission, Long> {
+public interface AdminPermissionRepository extends JpaRepository<AdminPermission, String> {
 	AdminPermission findByMemberId(String memberId);
 	
 	// 추가 메서드: 특정 회원의 모든 권한 조회

@@ -7,7 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
-public interface MemberBenefitRepository extends JpaRepository<MemberBenefit, String> {
+public interface MemberBenefitRepository extends JpaRepository<MemberBenefit, Long> {
 
     // 특정 회원의 베네핏 리스트 조회
     List<MemberBenefit> findByMemberId(String memberId);

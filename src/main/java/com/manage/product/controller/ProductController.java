@@ -9,8 +9,6 @@ import com.manage.product.entity.ProductImage;
 import com.manage.product.repository.ProductDetailImageRepository;
 import com.manage.product.repository.ProductImageRepository;
 import com.manage.product.service.ProductService;
-import lombok.RequiredArgsConstructor;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -31,7 +29,6 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/product")
-@RequiredArgsConstructor
 public class ProductController {
 	
 	private final ProductService productService;

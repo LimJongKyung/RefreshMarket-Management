@@ -5,12 +5,10 @@ import com.manage.benefit.repository.BenefitRepository;
 import com.manage.product.entity.Product;
 import com.manage.product.repository.ProductRepository;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BenefitServiceImpl implements BenefitService {
 
     private final BenefitRepository benefitRepository;
