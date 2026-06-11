@@ -89,7 +89,7 @@ public class ProductServiceImpl implements ProductService {
         // 3. 메인 이미지 업데이트
         if (imageFile != null && !imageFile.isEmpty()) {
             origin.setImageData(imageFile.getBytes());
-            origin.setImageType("MAIN");
+            origin.setImageType(resolveImageType(imageFile));
         }
 
         productRepository.save(origin);
@@ -162,7 +162,7 @@ public class ProductServiceImpl implements ProductService {
         // 1. 메인 이미지 Products 테이블에 저장
         if (mainImage != null && !mainImage.isEmpty()) {
             product.setImageData(mainImage.getBytes());
-            product.setImageType(mainImageType != null ? mainImageType : "MAIN");
+            product.setImageType(resolveImageType(mainImage));
         }
 
         productRepository.save(product); // 여기서 productId 생성됨
@@ -213,5 +213,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDetailImage> getDetailImagesByProductId(Long productId) {
         return productDetailImageRepository.findAllByProductId(productId);
+    }
+
+    private String resolveImageType(MultipartFile file) {
+        String contentType = file.getContentType();
+        return contentType != null && contentType.startsWith("image/")
+                ? contentType
+                : "image/jpeg";
     }
 }
