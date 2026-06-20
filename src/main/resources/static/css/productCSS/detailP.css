@@ -1,9 +1,27 @@
 /* 기본 레이아웃 */
 main.detail-product {
-    max-width: 800px;
-    margin: 50px auto;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: #333;
+    flex: 1;
+    width: min(960px, calc(100% - 32px));
+    max-width: 960px;
+    margin: clamp(18px, 3vw, 34px) auto;
+    padding: clamp(16px, 2.5vw, 24px);
+    border: 1px solid var(--admin-line, #dce7de);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: var(--admin-shadow, 0 18px 50px rgba(29, 63, 41, 0.12));
+    font-family: "Noto Sans KR", "Segoe UI", system-ui, sans-serif;
+    color: var(--admin-ink, #152119);
+}
+
+.detail-product .container {
+    margin: 0;
+    padding: 0;
+}
+
+.detail-product h2 {
+    margin: 0 0 20px;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 900;
 }
 
 /* 상세 테이블 */
@@ -11,18 +29,23 @@ main.detail-product {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    overflow: hidden;
+    border: 1px solid var(--admin-line, #dce7de);
+    border-radius: 16px;
 }
 
 .detail-product th,
 .detail-product td {
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 14px;
+    border: 0;
+    border-bottom: 1px solid var(--admin-line, #dce7de);
     text-align: left;
 }
 
 .detail-product th {
-    background-color: #f4f4f4;
-    font-weight: bold;
+    background-color: #f7faf6;
+    color: var(--admin-muted, #64726a);
+    font-weight: 900;
     width: 30%;
 }
 
@@ -31,8 +54,8 @@ main.detail-product {
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+    border-radius: 14px;
+    border: 1px solid var(--admin-line, #dce7de);
 }
 
 /* 버튼 컨테이너 */
@@ -49,7 +72,7 @@ main.detail-product {
     padding: 8px 16px;
     font-size: 14px;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
@@ -59,11 +82,11 @@ main.detail-product {
 
 /* 각 버튼 색상 */
 .detail-product .btn-primary {
-    background-color: #007bff;
+    background-color: var(--admin-green, #2f7d46);
 }
 
 .detail-product .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: var(--admin-green-dark, #1f5f34);
 }
 
 .detail-product .btn-secondary {
@@ -85,4 +108,45 @@ main.detail-product {
 /* form 안의 삭제 버튼 스타일링 */
 .detail-product form button.btn {
     border: none;
+}
+
+@media (max-width: 640px) {
+    main.detail-product {
+        width: calc(100% - 28px);
+        margin: 14px auto;
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+    .detail-product table,
+    .detail-product tbody,
+    .detail-product tr,
+    .detail-product th,
+    .detail-product td {
+        display: block;
+        width: 100%;
+    }
+
+    .detail-product tr {
+        border-bottom: 1px solid var(--admin-line, #dce7de);
+    }
+
+    .detail-product tr:last-child {
+        border-bottom: 0;
+    }
+
+    .detail-product th,
+    .detail-product td {
+        border-bottom: 0;
+    }
+
+    .detail-product th {
+        padding-bottom: 4px;
+        background: #ffffff;
+        font-size: 12px;
+    }
+
+    .detail-product td {
+        padding-top: 4px;
+    }
 }

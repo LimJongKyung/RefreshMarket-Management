@@ -1,25 +1,29 @@
 .product {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px 20px;
-  background-color: #fefefe;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex: 1;
+  width: min(760px, calc(100% - 32px));
+  max-width: 760px;
+  margin: clamp(18px, 3vw, 34px) auto;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid var(--admin-line, #dce7de);
+  background-color: rgba(255, 255, 255, 0.94);
+  border-radius: 20px;
+  box-shadow: var(--admin-shadow, 0 18px 50px rgba(29, 63, 41, 0.12));
+  font-family: "Noto Sans KR", "Segoe UI", system-ui, sans-serif;
 }
 
 .product h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #222;
-  font-weight: 700;
+  margin: 0 0 24px;
+  color: var(--admin-ink, #152119);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 900;
+  text-align: left;
 }
 
 .product label {
   display: block;
   margin-bottom: 8px;
-  font-weight: 600;
-  color: #444;
+  font-weight: 900;
+  color: var(--admin-muted, #64726a);
 }
 
 .product input[type="text"],
@@ -28,10 +32,12 @@
 .product textarea,
 .product input[type="file"] {
   width: 100%;
+  min-height: 44px;
   padding: 10px 14px;
   margin-bottom: 20px;
-  border: 1.7px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid var(--admin-line, #dce7de);
+  border-radius: 12px;
+  background: #ffffff;
   font-size: 1rem;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
@@ -43,8 +49,8 @@
 .product textarea:focus,
 .product input[type="file"]:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 7px #007bff55;
+  border-color: var(--admin-green, #2f7d46);
+  box-shadow: 0 0 0 3px rgba(47, 125, 70, 0.12);
 }
 
 .product textarea {
@@ -55,18 +61,27 @@
 .product button[type="submit"] {
   display: block;
   width: 100%;
-  background-color: #007bff;
+  background-color: var(--admin-green, #2f7d46);
   color: white;
   padding: 12px 0;
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 900;
   border: none;
-  border-radius: 7px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 10px;
 }
 
 .product button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: var(--admin-green-dark, #1f5f34);
+}
+
+@media (max-width: 640px) {
+  .product {
+    width: calc(100% - 28px);
+    margin: 14px auto;
+    padding: 16px;
+    border-radius: 16px;
+  }
 }
