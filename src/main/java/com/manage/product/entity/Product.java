@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "PRODUCTS")
@@ -30,7 +32,7 @@ public class Product {
 
     private Integer stock;
 
-    @Lob
+    @JdbcTypeCode(SqlTypes.BINARY)
     @Column(name = "IMAGE")
     private byte[] imageData;
     

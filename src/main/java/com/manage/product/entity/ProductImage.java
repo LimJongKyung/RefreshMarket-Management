@@ -1,6 +1,8 @@
 package com.manage.product.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "PRODUCT_IMAGES")
@@ -14,7 +16,7 @@ public class ProductImage {
     @Column(name = "PRODUCT_ID", nullable = false)
     private Long productId; // 어떤 상품의 이미지인지
 
-    @Lob
+    @JdbcTypeCode(SqlTypes.BINARY)
     @Column(name = "IMAGE")
     private byte[] image;
 

@@ -9,9 +9,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "RETURN_IMAGE")
@@ -25,7 +26,7 @@ public class ReturnImage {
     @JoinColumn(name = "RETURN_ID")
     private ReturnRequest returnRequest;
 
-    @Lob
+    @JdbcTypeCode(SqlTypes.BINARY)
     private byte[] imageData;
 
     private String imageName;
