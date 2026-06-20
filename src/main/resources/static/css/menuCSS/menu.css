@@ -1,4 +1,5 @@
 .menu-page {
+    width: min(800px, calc(100% - 28px));
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
@@ -40,6 +41,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    min-width: 0;
 }
 
 .menu-input {
@@ -83,4 +85,30 @@
 
 .add-form {
     margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+    .menu-page {
+        margin: 20px auto;
+        padding: 16px;
+    }
+
+    .menu-title {
+        font-size: 1.55rem;
+    }
+
+    .menu-item,
+    .menu-form {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .menu-input {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .menu-button {
+        flex: 1 1 auto;
+    }
 }

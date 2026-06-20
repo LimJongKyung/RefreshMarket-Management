@@ -2,52 +2,40 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" class="h-100" data-bs-theme="auto">
 	<head>
 	  <meta charset="UTF-8" />
-	  <title>Insert title here</title>
+	  <title>관리자 로그인 | RefreshMarket</title>
 	  <th:block th:insert="~{template/fragments/block :: config}"></th:block>
-	  <link href="/css/main.css" rel="stylesheet" />
-	  <link href="/css/custom-stats.css" rel="stylesheet" />
+	  <link href="/css/loginCSS/login.css" rel="stylesheet" />
 	</head>
 	<body>
-	  <main class="login-main" 
-		      style="display:flex; justify-content:center; align-items:center; min-height:80vh; background-color:#f9f7f1;">
-		    <div class="login-container" 
-		         style="background:#fff; padding:40px 30px; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2); width:100%; max-width:400px; text-align:center; color:#333;">
+	  <main class="login-main">
+		    <section class="login-card" aria-labelledby="login-title">
+		        <a class="login-brand" th:href="@{/}">
+		            <span class="login-brand__mark">R</span>
+		            <span>Refresh<span>Market</span></span>
+		        </a>
+		        <p class="login-eyebrow">Admin Console</p>
+		        <h1 id="login-title">관리자 로그인</h1>
 		        
-		        <h2 style="margin-bottom:30px; color:#333;">관리자 로그인</h2>
-		        
-		        <form th:action="@{/login}" method="post">
-		            <div style="margin-bottom:20px; text-align:left;">
-		                <label for="id" style="display:block; font-weight:600; margin-bottom:6px;">아이디</label>
-		                <input type="text" id="id" name="id" required 
-		                       style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;" />
-		            </div>
-		            <div style="margin-bottom:20px; text-align:left;">
-		                <label for="passwd" style="display:block; font-weight:600; margin-bottom:6px;">비밀번호</label>
-		                <input type="password" id="passwd" name="passwd" required 
-		                       style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;" />
-		            </div>
-		            <button type="submit" 
-		                    style="width:100%; padding:12px; background-color:#333; color:#fff; font-weight:600; border:none; border-radius:8px; cursor:pointer; transition:0.25s;">
-		                로그인
-		            </button>
+		        <form class="login-form" th:action="@{/login}" method="post">
+		            <label class="login-field" for="id">
+		                <span>아이디</span>
+		                <input type="text" id="id" name="id" required autocomplete="username" />
+		            </label>
+		            <label class="login-field" for="passwd">
+		                <span>비밀번호</span>
+		                <input type="password" id="passwd" name="passwd" required autocomplete="current-password" />
+		            </label>
+		            <button class="login-submit" type="submit">로그인</button>
 		        </form>
 		
-		        <!-- 아이디/비밀번호 찾기 + 회원가입 -->
-		        <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:0.9em;">
-		            <div>
-		                <a th:href="@{/findid}" style="color:#333; text-decoration:none; margin-right:10px;">아이디 찾기</a>
-		                <a th:href="@{/findpasswd}" style="color:#333; text-decoration:none;">비밀번호 찾기</a>
-		            </div>
-		            <a th:href="@{/signup}" 
-		               style="padding:6px 12px; background-color:#333; color:#fff; border-radius:6px; text-decoration:none; font-weight:600;">
-		                회원가입
-		            </a>
-		        </div>
+		        <nav class="login-links" aria-label="로그인 도움말">
+		            <a th:href="@{/findid}">아이디 찾기</a>
+		            <a th:href="@{/findpasswd}">비밀번호 찾기</a>
+		            <a class="login-links__signup" th:href="@{/signup}">회원가입</a>
+		        </nav>
 		
-		        <p th:if="${msg}" style="margin-top:20px; color:red; font-weight:500;" th:text="${msg}"></p>
-		    </div>
+		        <p class="login-message" th:if="${msg}" th:text="${msg}"></p>
+		    </section>
 		</main>
 	</body>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="/JS/main.js"></script>
 </html>

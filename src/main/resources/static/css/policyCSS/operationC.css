@@ -9,6 +9,7 @@
   padding: 20px;
   background-color: #f9f9f9;
   font-family: 'Noto Sans KR', sans-serif;
+  min-width: 0;
 }
 
 /* ====== 입력 폼 영역 ====== */
@@ -133,8 +134,13 @@ table td button:nth-child(2) { /* 삭제 */
 
 /* ====== 반응형 ====== */
 @media (max-width: 768px) {
+  .benefit-management {
+    padding: 16px;
+  }
+
   .benefit-management label {
     display: block;
+    width: auto;
     margin-bottom: 5px;
   }
 
@@ -146,5 +152,9 @@ table td button:nth-child(2) { /* 삭제 */
 
   #discountValueDiv {
     display: block;
+  }
+
+  #productResults {
+    max-width: 100%;
   }
 }

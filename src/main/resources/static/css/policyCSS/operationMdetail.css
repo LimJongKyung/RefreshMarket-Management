@@ -164,6 +164,11 @@
 @media (max-width: 768px) {
     .operationM {
         padding: 30px 15px;
+        min-width: 0;
+    }
+
+    .operationM .container {
+        padding: 24px 16px;
     }
 
     .operationM h2 {
@@ -192,3 +197,13 @@
     }
 }
 
+@media (max-width: 460px) {
+    .operationM .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .operationM .btn {
+        width: 100%;
+        margin-right: 0;
+    }
+}

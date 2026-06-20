@@ -25,15 +25,15 @@
 			    </thead>
 			    <tbody>
 			        <tr th:each="cust : ${adminCustomers}">
-			            <td>
+			            <td data-label="아이디">
 			                <a th:href="@{'/operationM/detail/' + ${cust.id}}" 
 			                   th:text="${cust.id}">ID</a>
 			            </td>
-			            <td>
+			            <td data-label="이름">
 			                <a th:href="@{'/operationM/detail/' + ${cust.id}}" 
 			                   th:text="${cust.name}">Name</a>
 			            </td>
-			            <td th:text="${cust.grade}">Grade</td>
+			            <td data-label="등급" th:text="${cust.grade}">Grade</td>
 			        </tr>
 			    </tbody>
 			</table>

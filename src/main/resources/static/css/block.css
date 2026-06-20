@@ -43,6 +43,26 @@ input,
 select,
 textarea {
   font: inherit;
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
 }
 
 .header-welcome-container {
@@ -209,7 +229,9 @@ textarea {
 }
 
 .main-menu__item:hover ul,
-.side-menu__item:hover .side-menu__submenu {
+.main-menu__item:focus-within ul,
+.side-menu__item:hover .side-menu__submenu,
+.side-menu__item:focus-within .side-menu__submenu {
   display: grid;
   gap: 4px;
 }
@@ -299,12 +321,23 @@ textarea {
 .container,
 .main-content,
 main.product,
-main.detail-product {
+main.detail-product,
+main,
+form,
+fieldset,
+section,
+article,
+div {
   min-width: 0;
 }
 
 table {
   max-width: 100%;
+}
+
+td,
+th {
+  overflow-wrap: anywhere;
 }
 
 img {
@@ -315,6 +348,7 @@ img {
 button[type="submit"],
 input[type="submit"] {
   min-height: 40px;
+  white-space: normal;
 }
 
 @media (max-width: 900px) {
@@ -343,28 +377,42 @@ input[type="submit"] {
     width: 100% !important;
     min-height: 0 !important;
     padding: 12px 14px;
-    overflow-x: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 70;
   }
 
   .side-menu__list {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
-    min-width: max-content;
+    min-width: 0;
   }
 
   .side-menu__item {
+    flex: 1 1 150px;
     margin: 0 !important;
   }
 
   .side-menu__link {
+    justify-content: center;
     min-height: 38px;
     padding: 0 12px;
     white-space: nowrap;
   }
 
   .side-menu__submenu {
-    left: 0;
-    top: calc(100% + 6px);
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin-top: 6px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+
+  .side-menu__submenu li a {
+    text-align: center;
+    white-space: normal;
   }
 }
 
@@ -392,5 +440,35 @@ input[type="submit"] {
     min-height: 38px;
     padding: 0 12px;
     font-size: 13px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-wrapper > table,
+  .order-list table,
+  .return-list table,
+  .benefit-management table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .side-menu__item {
+    flex-basis: 100%;
+  }
+
+  .side-menu__link {
+    justify-content: flex-start;
   }
 }
