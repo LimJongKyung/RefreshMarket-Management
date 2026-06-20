@@ -1,0 +1,447 @@
+main.customer,
+.request,
+.request-detail,
+.order-list,
+.return-list,
+.order-edit,
+.benefit-management,
+.operationM,
+.menu-page,
+.modify-customer,
+main.detail-customer {
+  width: 100% !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  padding: clamp(18px, 3vw, 34px) !important;
+  background: transparent !important;
+  color: var(--admin-ink) !important;
+  font-family: inherit !important;
+}
+
+.admin-board,
+.customer-list,
+.request .container,
+.request-detail,
+.order-list,
+.return-list,
+.order-edit,
+.benefit-management,
+.operationM .container,
+.menu-page,
+.modify-customer,
+main.detail-customer,
+.detail-customer table,
+.request-detail table {
+  width: min(100%, 1180px) !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 16px !important;
+  background: var(--admin-surface) !important;
+  box-shadow: var(--admin-shadow) !important;
+}
+
+.admin-board,
+.customer-list,
+.request .container,
+.order-list,
+.return-list,
+.order-edit,
+.benefit-management,
+.operationM .container,
+.menu-page,
+.modify-customer,
+main.detail-customer {
+  padding: clamp(18px, 3vw, 30px) !important;
+  overflow: hidden !important;
+}
+
+.request-detail {
+  padding: clamp(18px, 3vw, 34px) !important;
+  overflow: hidden !important;
+}
+
+.request .container,
+.request.flex-grow-1,
+.request.d-flex {
+  display: block !important;
+}
+
+.customer-list h2,
+.request h1,
+.request-detail h1,
+.order-list h1,
+.return-list h2,
+.benefit-management h2,
+.operationM h2,
+.menu-title,
+.modify-customer h2,
+.detail-customer h2 {
+  margin: 0 0 20px !important;
+  padding: 0 0 14px !important;
+  border-bottom: 1px solid var(--admin-line) !important;
+  color: var(--admin-ink) !important;
+  font-size: clamp(22px, 3vw, 30px) !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
+}
+
+.customer-list form,
+.request .search-form,
+.order-list .search-form,
+.return-list form,
+.benefit-management > div:first-of-type,
+.menu-form,
+.add-form {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin: 0 0 18px !important;
+}
+
+.customer-list select,
+.customer-list input[type="text"],
+.request .search-form input[type="text"],
+.request .form-control,
+.order-list .search-form select,
+.order-list .search-form input[type="text"],
+.return-list input[type="text"],
+.benefit-management input,
+.benefit-management select,
+.menu-input,
+.modify-customer input,
+.modify-customer select,
+.order-edit input,
+.order-edit select,
+.request-detail textarea {
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 13px !important;
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 11px !important;
+  background: #f9fcfa !important;
+  color: var(--admin-ink) !important;
+  box-shadow: none !important;
+}
+
+.request .form-control,
+.request .w-50 {
+  width: min(100%, 420px) !important;
+}
+
+.customer-list button,
+.request .btn,
+.order-list .search-form button,
+.return-list button,
+.benefit-management button,
+.menu-button,
+.modify-customer button,
+.modify-customer .btn,
+.order-edit button,
+.order-edit .button-link,
+.request-detail .btn,
+.detail-customer .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  padding: 0 15px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: #17241b !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 850 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.customer-list button:hover,
+.request .btn:hover,
+.order-list .search-form button:hover,
+.return-list button:hover,
+.benefit-management button:hover,
+.menu-button:hover,
+.modify-customer button:hover,
+.modify-customer .btn:hover,
+.order-edit button:hover,
+.order-edit .button-link:hover,
+.request-detail .btn:hover,
+.detail-customer .btn:hover {
+  background: var(--admin-green-dark) !important;
+}
+
+.customer-list table,
+.request table,
+.order-list table,
+.return-list table,
+.benefit-management table,
+.operationM table,
+.request-detail table,
+.detail-customer table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.table-responsive,
+.table-wrapper,
+.customer-list,
+.order-list,
+.return-list,
+.benefit-management {
+  max-width: 100% !important;
+}
+
+.table-responsive,
+.table-wrapper {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.customer-list th,
+.customer-list td,
+.request th,
+.request td,
+.order-list th,
+.order-list td,
+.return-list th,
+.return-list td,
+.benefit-management th,
+.benefit-management td,
+.operationM th,
+.operationM td,
+.request-detail th,
+.request-detail td,
+.detail-customer th,
+.detail-customer td {
+  padding: 13px 14px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--admin-line) !important;
+  color: var(--admin-ink) !important;
+  font-size: 14px !important;
+  vertical-align: middle !important;
+}
+
+.customer-list th,
+.request th,
+.order-list th,
+.return-list th,
+.benefit-management th,
+.operationM th,
+.request-detail th,
+.detail-customer th {
+  background: var(--admin-panel) !important;
+  color: var(--admin-muted) !important;
+  font-weight: 900 !important;
+}
+
+.customer-list tr:last-child td,
+.request tr:last-child td,
+.order-list tr:last-child td,
+.return-list tr:last-child td,
+.benefit-management tr:last-child td,
+.operationM tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+.customer-list a,
+.request a,
+.order-list a,
+.return-list a,
+.operationM a {
+  color: var(--admin-green-dark) !important;
+  font-weight: 850 !important;
+  text-decoration: none !important;
+}
+
+.customer-list a:hover,
+.request a:hover,
+.order-list a:hover,
+.return-list a:hover,
+.operationM a:hover {
+  color: var(--admin-green) !important;
+  text-decoration: underline !important;
+}
+
+.pagination,
+.order-list .pagination,
+.return-list .pagination,
+.request .pagination {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 18px !important;
+  color: var(--admin-muted) !important;
+}
+
+.pagination a,
+.order-list .pagination a,
+.return-list .pagination a,
+.request .pagination a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  padding: 0 12px !important;
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  color: var(--admin-green-dark) !important;
+  font-weight: 850 !important;
+  text-decoration: none !important;
+}
+
+.pagination a.active,
+.pagination a:hover,
+.order-list .pagination a:hover,
+.return-list .pagination a:hover,
+.request .pagination a:hover {
+  background: var(--admin-green-dark) !important;
+  color: #ffffff !important;
+  border-color: var(--admin-green-dark) !important;
+}
+
+@media (max-width: 900px) {
+  .main-menu {
+    overflow: visible !important;
+  }
+
+  .main-menu__list {
+    min-width: 0 !important;
+    flex-wrap: wrap !important;
+  }
+
+  .main-menu__item {
+    flex: 1 1 145px !important;
+  }
+
+  .main-menu__link {
+    justify-content: center !important;
+  }
+
+  .main-menu__item ul {
+    position: static !important;
+    display: grid !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 6px !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html,
+  body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  main.customer,
+  .request,
+  .request-detail,
+  .order-list,
+  .return-list,
+  .order-edit,
+  .benefit-management,
+  .operationM,
+  .menu-page,
+  .modify-customer,
+  main.detail-customer {
+    padding: 14px !important;
+  }
+
+  .customer-list,
+  .admin-board,
+  .request .container,
+  .request-detail,
+  .order-list,
+  .return-list,
+  .order-edit,
+  .benefit-management,
+  .operationM .container,
+  .menu-page,
+  .modify-customer,
+  main.detail-customer {
+    width: 100% !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .customer-list form,
+  .request .search-form,
+  .order-list .search-form,
+  .return-list form,
+  .benefit-management > div:first-of-type {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .customer-list select,
+  .customer-list input[type="text"],
+  .customer-list button,
+  .request .search-form input[type="text"],
+  .request .form-control,
+  .request .w-50,
+  .request .btn,
+  .order-list .search-form select,
+  .order-list .search-form input[type="text"],
+  .order-list .search-form button,
+  .return-list input[type="text"],
+  .return-list button,
+  .benefit-management input,
+  .benefit-management select,
+  .benefit-management button {
+    width: 100% !important;
+  }
+
+  .table-responsive {
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  .customer-list,
+  .admin-board,
+  .order-list,
+  .return-list,
+  .benefit-management {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .request table,
+  .admin-board table,
+  .customer-list table,
+  .order-list table,
+  .return-list table,
+  .benefit-management table {
+    min-width: 720px !important;
+  }
+
+  .request-detail table,
+  .detail-customer table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .main-menu__item {
+    flex-basis: 100% !important;
+  }
+
+  .main-menu__link {
+    justify-content: flex-start !important;
+  }
+}

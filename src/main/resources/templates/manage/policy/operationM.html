@@ -13,9 +13,10 @@
   <th:block th:insert="~{template/fragments/block :: mainMenu}"></th:block>
   <div class="layout-container">
     <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
-	    <main class="operationM">
-		    <h2>운영방침 관리 - 관리자용</h2>
-		    <table>
+	    <main class="operationM operationM-list">
+		    <div class="admin-board">
+			    <h2>운영방침 관리 - 관리자용</h2>
+			    <table>
 			    <thead>
 			        <tr>
 			            <th>아이디</th>
@@ -36,7 +37,8 @@
 			            <td data-label="등급" th:text="${cust.grade}">Grade</td>
 			        </tr>
 			    </tbody>
-			</table>
+				</table>
+			</div>
 		</main>
 	  </div>
   <th:block th:insert="~{template/fragments/block :: footer}"></th:block>
