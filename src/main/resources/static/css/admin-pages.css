@@ -445,3 +445,401 @@ main.detail-customer {
     justify-content: flex-start !important;
   }
 }
+
+/* Final consistency layer for older page-specific styles. */
+.layout-container > main,
+main.product,
+.product,
+.product-list,
+.modify-product,
+.detail-product,
+.detail-product .container,
+.detail-customer .container,
+.return-images,
+.find-id,
+.find-password,
+.signup {
+  color: var(--admin-ink) !important;
+  font-family: inherit !important;
+}
+
+main.product,
+main.detail-product,
+main.detail-customer,
+.modify-product,
+.modify-customer,
+.find-id,
+.find-password,
+.signup {
+  width: 100% !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  padding: clamp(18px, 3vw, 34px) !important;
+  background: transparent !important;
+}
+
+.layout-container > main.product.product-form > h2,
+.modify-product,
+.detail-product .container,
+.detail-customer .container,
+.product-list,
+.find-id,
+.find-password,
+.signup {
+  width: min(100%, 1180px) !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+}
+
+.layout-container > main.product.product-form,
+.modify-product,
+.detail-product .container,
+.detail-customer .container,
+.product-list,
+.find-id,
+.find-password,
+.signup {
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 16px !important;
+  background: var(--admin-surface) !important;
+  box-shadow: var(--admin-shadow) !important;
+}
+
+.layout-container > main.product.product-form,
+.modify-product,
+.detail-product .container,
+.detail-customer .container,
+.product-list,
+.find-id,
+.find-password,
+.signup {
+  padding: clamp(18px, 3vw, 30px) !important;
+  overflow: hidden !important;
+}
+
+.product-list__eyebrow {
+  color: var(--admin-green-dark) !important;
+}
+
+.layout-container > main.product.product-form h2,
+.modify-product h2,
+.detail-product h2,
+.detail-customer h2,
+.find-id h2,
+.find-password h2,
+.signup h2 {
+  margin: 0 0 20px !important;
+  padding: 0 0 14px !important;
+  border-bottom: 1px solid var(--admin-line) !important;
+  color: var(--admin-ink) !important;
+  font-size: clamp(22px, 3vw, 30px) !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+  text-align: left !important;
+}
+
+.layout-container > main.product.product-form label,
+.modify-product label,
+.modify-customer label,
+.order-edit label,
+.find-id label,
+.find-password label,
+.signup label,
+.request-detail th,
+.detail-product th,
+.detail-customer th,
+.return-list th {
+  color: var(--admin-muted) !important;
+  font-weight: 900 !important;
+}
+
+.layout-container > main.product.product-form input[type="text"],
+.layout-container > main.product.product-form input[type="number"],
+.layout-container > main.product.product-form input[type="email"],
+.layout-container > main.product.product-form input[type="password"],
+.layout-container > main.product.product-form input[type="file"],
+.layout-container > main.product.product-form select,
+.layout-container > main.product.product-form textarea,
+.modify-product input[type="text"],
+.modify-product input[type="number"],
+.modify-product input[type="email"],
+.modify-product input[type="password"],
+.modify-product input[type="file"],
+.modify-product select,
+.modify-product textarea,
+.detail-product input,
+.detail-product select,
+.detail-product textarea,
+.return-list select,
+.return-list input[type="text"],
+.find-id input,
+.find-password input,
+.signup input,
+.signup select,
+.signup textarea {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 13px !important;
+  margin: 0 0 16px !important;
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 11px !important;
+  background: #f9fcfa !important;
+  color: var(--admin-ink) !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.layout-container > main.product.product-form textarea,
+.modify-product textarea,
+.detail-product textarea,
+.signup textarea {
+  min-height: 110px !important;
+  padding-top: 12px !important;
+}
+
+.layout-container > main.product.product-form input:focus,
+.layout-container > main.product.product-form select:focus,
+.layout-container > main.product.product-form textarea:focus,
+.modify-product input:focus,
+.modify-product select:focus,
+.modify-product textarea:focus,
+.find-id input:focus,
+.find-password input:focus,
+.signup input:focus,
+.signup select:focus,
+.signup textarea:focus {
+  border-color: var(--admin-green) !important;
+  box-shadow: 0 0 0 3px rgba(47, 125, 70, 0.12) !important;
+}
+
+input[type="checkbox"],
+input[type="radio"],
+.form-check-input {
+  width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  margin: 0 8px 0 0 !important;
+  accent-color: var(--admin-green) !important;
+}
+
+.layout-container > main.product.product-form button,
+.layout-container > main.product.product-form .btn,
+.modify-product button,
+.modify-product .btn,
+.detail-product .btn,
+.detail-customer .btn,
+.return-list .btn,
+.find-id button,
+.find-id a,
+.find-password button,
+.find-password .btn-link,
+.signup button,
+.signup .btn-link,
+.button-group button,
+.button-group .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  padding: 0 15px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: #17241b !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 850 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+.layout-container > main.product.product-form button:hover,
+.layout-container > main.product.product-form .btn:hover,
+.modify-product button:hover,
+.modify-product .btn:hover,
+.detail-product .btn:hover,
+.detail-customer .btn:hover,
+.return-list .btn:hover,
+.find-id button:hover,
+.find-id a:hover,
+.find-password button:hover,
+.find-password .btn-link:hover,
+.signup button:hover,
+.signup .btn-link:hover,
+.button-group button:hover,
+.button-group .btn:hover {
+  background: var(--admin-green-dark) !important;
+}
+
+.btn-secondary,
+.button-group .btn-secondary {
+  background: #526156 !important;
+}
+
+.btn-danger,
+button.btn-danger,
+.answer-buttons .btn-danger {
+  background: var(--admin-red) !important;
+}
+
+.btn-danger:hover,
+button.btn-danger:hover,
+.answer-buttons .btn-danger:hover {
+  background: #b93d38 !important;
+}
+
+.detail-product table,
+.detail-customer table,
+.return-list table,
+.request-detail table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.detail-product th,
+.detail-product td,
+.detail-customer th,
+.detail-customer td,
+.return-list th,
+.return-list td,
+.request-detail th,
+.request-detail td {
+  padding: 13px 14px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--admin-line) !important;
+  color: var(--admin-ink) !important;
+  font-size: 14px !important;
+  vertical-align: middle !important;
+}
+
+.detail-product th,
+.detail-customer th,
+.return-list th,
+.request-detail th {
+  width: 180px !important;
+  background: var(--admin-panel) !important;
+  color: var(--admin-muted) !important;
+}
+
+.benefit-card,
+.no-benefit,
+#existingAnswer,
+.return-images,
+.operationM .mb-3,
+.operationM .checkbox-grid .form-check {
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 12px !important;
+  background: var(--admin-panel) !important;
+  color: var(--admin-ink) !important;
+  box-shadow: none !important;
+}
+
+.benefit-card {
+  padding: 12px !important;
+}
+
+.benefit-name {
+  color: var(--admin-ink) !important;
+  font-weight: 900 !important;
+}
+
+.benefit-desc,
+.card-subtitle,
+.card-text {
+  color: var(--admin-muted) !important;
+}
+
+.return-images {
+  margin-top: 24px !important;
+  padding: 16px !important;
+}
+
+.return-images h3 {
+  margin: 0 0 14px !important;
+  color: var(--admin-ink) !important;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+}
+
+.return-images img,
+.modify-product img,
+.detail-product img,
+.detail-customer img {
+  border: 1px solid var(--admin-line) !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.message,
+.msg {
+  display: block !important;
+  margin: -8px 0 12px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+.success {
+  color: var(--admin-green-dark) !important;
+}
+
+.error {
+  color: var(--admin-red) !important;
+}
+
+@media (max-width: 640px) {
+  .layout-container > main.product.product-form,
+  .modify-product,
+  .detail-product .container,
+  .detail-customer .container,
+  .product-list,
+  .find-id,
+  .find-password,
+  .signup {
+    width: 100% !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .button-group,
+  .detail-customer .mt-3,
+  .detail-product .mt-3 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    text-align: initial !important;
+  }
+
+  .layout-container > main.product.product-form button,
+  .layout-container > main.product.product-form .btn,
+  .modify-product button,
+  .modify-product .btn,
+  .detail-product .btn,
+  .detail-customer .btn,
+  .return-list .btn,
+  .find-id button,
+  .find-id a,
+  .find-password button,
+  .find-password .btn-link,
+  .signup button,
+  .signup .btn-link {
+    width: 100% !important;
+  }
+
+  .detail-product table,
+  .detail-customer table,
+  .return-list table,
+  .request-detail table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}

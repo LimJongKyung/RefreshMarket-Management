@@ -14,7 +14,7 @@
     <div class="layout-container">
     <th:block th:insert="~{template/fragments/block :: sideMenu}"></th:block>
 	    <main class="return-list">
-		    <h2>📄 반품 요청 상세</h2>
+		    <h2>반품 요청 상세</h2>
 		
 		    <form th:action="@{/orders/update}" method="post">
 		        <input type="hidden" name="returnId" th:value="${request.returnId}" />
@@ -51,7 +51,7 @@
 		        </table>
 		
 				<section class="return-images" style="margin-top: 40px;">
-				    <h3>🖼️ 첨부 이미지</h3>
+				    <h3>첨부 이미지</h3>
 				    <div th:if="${images != null and !images.isEmpty()}">
 				        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
 				            <div th:each="img : ${images}">
@@ -67,8 +67,8 @@
 				</section>
 		
 		        <div style="margin-top: 20px;">
-		            <button type="submit" class="btn">💾 저장</button>
-		            <a th:href="@{/orders/return}" class="btn">🔙 목록으로</a>
+		            <button type="submit" class="btn">저장</button>
+		            <a th:href="@{/orders/return}" class="btn">목록으로</a>
 		        </div>
 		    </form>
 		</main>
