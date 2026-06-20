@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // 검색 조건: 이름, 설명, 카테고리 ID (String 형태)
+    boolean existsByName(String name);
+
     Page<Product> findByNameContainingIgnoreCase(String keyword, Pageable pageable);
     Page<Product> findByDescriptionContainingIgnoreCase(String keyword, Pageable pageable);
     Page<Product> findByCategory(String category, Pageable pageable);
