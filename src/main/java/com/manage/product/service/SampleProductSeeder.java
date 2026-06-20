@@ -3,6 +3,7 @@ package com.manage.product.service;
 import com.manage.product.entity.Product;
 import com.manage.product.repository.ProductRepository;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -82,6 +83,7 @@ public class SampleProductSeeder implements CommandLineRunner {
             String detailOptionPrice
     ) {
         Product product = new Product();
+        LocalDateTime now = LocalDateTime.now();
         product.setName(name);
         product.setDescription(description);
         product.setPrice(new BigDecimal(price));
@@ -92,6 +94,8 @@ public class SampleProductSeeder implements CommandLineRunner {
         product.setManufacturer(manufacturer);
         product.setDetailOption(detailOption);
         product.setDetailOptionPrice(detailOptionPrice);
+        product.setCreatedAt(now);
+        product.setUpdatedAt(now);
         return product;
     }
 }
